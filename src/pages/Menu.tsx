@@ -240,7 +240,7 @@ function MenuSectionCombined({
           <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/40 border border-white/10 shadow-[0_0_0_1px_rgba(225,29,72,0.10)_inset]">
             <Icon className="w-5 h-5 text-[#e11d48]" />
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-[0.16em] text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-[0.16em] text-black">
             {title}
           </h2>
         </div>
@@ -339,7 +339,7 @@ export default function Menu() {
                 </span>
                   );
                 })()}
-                <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-[0.16em] text-white">
+                <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-[0.16em] text-black">
                   {section.title}
                 </h2>
               </div>
