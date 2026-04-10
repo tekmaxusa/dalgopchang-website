@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Gift, CreditCard, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "../components/BilingualText";
 
 export default function GiftCard() {
   return (

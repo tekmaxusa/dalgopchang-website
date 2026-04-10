@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Tag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "../components/BilingualText";
 
 export default function SpecialDeal() {
   const deals = [

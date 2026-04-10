@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { blogPosts } from "@/data/blogPosts";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "../components/BilingualText";
 
 interface BlogProps {
   onPostClick: (slug: string) => void;

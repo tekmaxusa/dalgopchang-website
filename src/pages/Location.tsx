@@ -1,6 +1,6 @@
 import LocationContact from "@/components/LocationContact";
 import { motion } from "motion/react";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "../components/BilingualText";
 
 export default function Location() {
   return (

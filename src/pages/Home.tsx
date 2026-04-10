@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import LocationContact from "@/components/LocationContact";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "../components/BilingualText";
 
 interface HomeProps {
   onPageChange: (page: string) => void;

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import BilingualText from "@/components/BilingualText";
+import BilingualText from "./BilingualText";
 
 interface HeroProps {
   onViewMenu: () => void;
