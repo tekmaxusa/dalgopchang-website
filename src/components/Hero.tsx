@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import BilingualText from "./BilingualText";
+import { withBaseUrl } from "@/lib/asset";
 
 interface HeroProps {
   onViewMenu: () => void;
@@ -14,7 +15,7 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero.png"
+          src={withBaseUrl("/hero.png")}
           alt="Dalgopchang storefront"
           className="w-full h-full object-cover"
         />

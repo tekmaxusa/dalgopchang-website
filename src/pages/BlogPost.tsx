@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/data/blogPosts";
+import { withBaseUrl } from "@/lib/asset";
 
 interface BlogPostProps {
   slug: string;
@@ -44,7 +45,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
         >
           <div className="aspect-video w-full rounded-3xl overflow-hidden mb-12 shadow-2xl shadow-primary/10">
             <img
-              src={post.image}
+              src={withBaseUrl(post.image)}
               alt={post.title}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

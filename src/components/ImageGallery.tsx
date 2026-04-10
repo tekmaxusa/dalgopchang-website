@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Maximize2 } from "lucide-react";
+import { withBaseUrl } from "@/lib/asset";
 
 interface GalleryImage {
   src: string;
@@ -59,7 +60,7 @@ export default function ImageGallery() {
                 }
               >
                 <img
-                  src={image.src}
+                  src={withBaseUrl(image.src)}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
@@ -81,7 +82,7 @@ export default function ImageGallery() {
               >
                 <div className="relative h-screen w-screen flex items-center justify-center">
                   <img
-                    src={image.src}
+                    src={withBaseUrl(image.src)}
                     alt={image.alt}
                     decoding="async"
                     className="h-[100vh] w-[100vw] object-contain"

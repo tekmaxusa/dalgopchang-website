@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { withBaseUrl } from "@/lib/asset";
 
 interface AboutSectionProps {
   isShort?: boolean;
@@ -62,7 +63,7 @@ export default function AboutSection({ isShort, onReadMore }: AboutSectionProps)
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
               <img
-                src="/photos/about-our-story.png"
+                src={withBaseUrl("/photos/about-our-story.png")}
                 alt="Dalgopchang dining room"
                 className="w-full h-full object-cover"
               />

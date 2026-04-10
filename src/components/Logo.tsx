@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { withBaseUrl } from "@/lib/asset";
 
 interface LogoProps {
   className?: string;
@@ -16,7 +17,7 @@ export default function Logo({ className, size = "md" }: LogoProps) {
     <div className={cn("flex items-center justify-center", className)}>
       <div className={cn("relative", sizes[size])}>
         <img 
-          src="/logo.png"
+          src={withBaseUrl("/logo.png")}
           alt="Dalgopchang Logo" 
           className="h-full w-auto object-contain"
           onError={(e) => {

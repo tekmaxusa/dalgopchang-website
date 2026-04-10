@@ -7,6 +7,7 @@ import { MENU_SECTIONS } from "@/data/menuImages";
 import { MENU_ITEM_SECTIONS } from "@/data/menuItems";
 import { ChefHat, CupSoda, Flame, Layers, Maximize2, Plus, UtensilsCrossed } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { withBaseUrl } from "@/lib/asset";
 
 const categories = [{ id: "all", label: "All" }, ...MENU_SECTIONS.map((s) => ({ id: s.id, label: s.title }))];
 
@@ -81,7 +82,7 @@ function MenuImageGrid({
             }
           >
             <img
-              src={image.src}
+              src={withBaseUrl(image.src)}
               alt={image.alt}
               loading="lazy"
               decoding="async"
@@ -109,7 +110,7 @@ function MenuImageGrid({
           >
             <div className="relative h-screen w-screen flex items-center justify-center p-0">
               <img
-                src={image.src}
+                src={withBaseUrl(image.src)}
                 alt={image.alt}
                 decoding="async"
                 className="h-[100vh] w-[100vw] object-contain"
@@ -152,7 +153,7 @@ function MenuItemCardGrid({
             <div className="rounded-2xl border border-white/10 bg-black/40 overflow-hidden shadow-[0_18px_55px_-35px_rgba(0,0,0,0.95)]">
               <div className="relative aspect-square">
                 <img
-                  src={item.imageSrc}
+                  src={item.imageSrc ? withBaseUrl(item.imageSrc) : undefined}
                   alt={`${item.ko} — ${item.en}`}
                   loading="lazy"
                   decoding="async"
@@ -190,7 +191,7 @@ function MenuItemCardGrid({
           >
             <div className="relative h-screen w-screen flex items-center justify-center">
               <img
-                src={item.imageSrc}
+                src={item.imageSrc ? withBaseUrl(item.imageSrc) : undefined}
                 alt={`${item.ko} — ${item.en}`}
                 decoding="async"
                 className="h-[100vh] w-[100vw] object-contain"

@@ -3,6 +3,7 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { blogPosts } from "@/data/blogPosts";
 import BilingualText from "../components/BilingualText";
+import { withBaseUrl } from "@/lib/asset";
 
 interface BlogProps {
   onPostClick: (slug: string) => void;
@@ -43,7 +44,7 @@ export default function Blog({ onPostClick }: BlogProps) {
               >
                 <div className="aspect-video overflow-hidden">
                   <img
-                    src={post.image}
+                    src={withBaseUrl(post.image)}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
