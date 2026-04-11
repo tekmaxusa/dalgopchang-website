@@ -1,4 +1,3 @@
-import BackToTop from "@/components/BackToTop";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -185,8 +184,6 @@ export default function Menu() {
           );
         })}
       </div>
-
-      <BackToTop />
     </main>
   );
 }

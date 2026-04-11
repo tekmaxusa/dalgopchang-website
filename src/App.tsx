@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Blog from "./pages/Blog";
@@ -70,6 +71,8 @@ export default function App() {
       </AnimatePresence>
 
       <Footer onPageChange={handlePageChange} />
+
+      <BackToTop />
     </div>
   );
 }
