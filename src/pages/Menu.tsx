@@ -124,7 +124,7 @@ export default function Menu() {
             <span className="text-white">THE</span> <span className="text-primary">MENU</span>
           </h1>
           <p className="mx-auto max-w-2xl px-1 text-base text-white sm:text-lg md:text-xl">
-            Explore our curated selection of premium Korean Gopchang and BBQ. Click any card image to enlarge.
+            Explore our curated selection of premium Korean Gopchang and BBQ.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Button
