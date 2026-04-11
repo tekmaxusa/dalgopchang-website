@@ -42,23 +42,23 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
         isScrolled ? "bg-black/95 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.85)] backdrop-blur-sm" : "bg-black"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div 
-          className="cursor-pointer group"
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
+        <div
+          className="group shrink-0 cursor-pointer"
           onClick={() => onPageChange("home")}
         >
           <Logo size="md" className="items-start" />
         </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:block" aria-label="Primary">
+        {/* Desktop Nav — pinned to the right */}
+        <nav className="hidden md:flex md:flex-1 md:justify-end" aria-label="Primary">
           <ul className="m-0 flex items-center gap-12 p-0 list-none">
             {navItems.map((item) => (
               <li key={item.id} className="list-none">
                 <button
                   onClick={() => onPageChange(item.id)}
                   className={cn(
-                    "relative text-sm font-semibold uppercase tracking-[0.22em] leading-none transition-colors px-1 py-2",
+                    "relative px-1 py-2 text-sm font-semibold uppercase leading-none tracking-[0.22em] transition-colors",
                     "text-white hover:text-white active:text-[#e11d48]",
                     currentPage === item.id && "text-[#e11d48]"
                   )}
@@ -66,7 +66,7 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                   {item.label}
                   <span
                     className={cn(
-                      "pointer-events-none absolute left-0 right-0 -bottom-0.5 mx-auto h-0.5 w-full origin-center rounded-full transition-all duration-200",
+                      "pointer-events-none absolute -bottom-0.5 left-0 right-0 mx-auto h-0.5 w-full origin-center rounded-full transition-all duration-200",
                       currentPage === item.id ? "bg-[#e11d48] opacity-100" : "bg-[#e11d48]/0 opacity-0"
                     )}
                   />
@@ -76,11 +76,15 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
           </ul>
         </nav>
 
-        {/* Mobile Nav & Small Desktop */}
-        <div className="md:hidden flex items-center gap-4">
+        {/* Mobile: hamburger on the far right (not centered) */}
+        <div className="flex shrink-0 md:hidden">
           <Sheet>
-            <SheetTrigger render={<Button variant="ghost" size="icon" className="text-foreground" />}>
-              <Menu className="w-6 h-6" />
+            <SheetTrigger
+              render={
+                <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0 text-foreground" aria-label="Open menu" />
+              }
+            >
+              <Menu className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent side="right" className="bg-background border-border p-0">
               <div className="flex flex-col h-full p-8">
