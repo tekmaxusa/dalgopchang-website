@@ -12,14 +12,15 @@ interface HeroProps {
 export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src={withBaseUrl("/hero.png")}
           alt="Dalgopchang storefront"
           className="w-full h-full object-cover"
+          decoding="async"
+          fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
       </div>
 
       {/* Content */}
@@ -29,10 +30,11 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-5xl md:text-8xl font-display font-extrabold mb-6 tracking-tighter leading-none text-cream-gradient">
-            DALGOPCHANG <span className="text-gradient block md:inline">달곱창</span>
+          <h1 className="text-5xl md:text-8xl font-display font-extrabold mb-6 tracking-tighter leading-none">
+            <span className="text-white">DALGOPCHANG</span>{" "}
+            <span className="text-primary block md:inline">달곱창</span>
           </h1>
-          <p className="text-lg md:text-2xl text-cream/90 mb-10 max-w-2xl mx-auto font-bold tracking-tight">
+          <p className="text-lg md:text-2xl text-white mb-10 max-w-2xl mx-auto font-bold tracking-tight">
             Best Korean Gopchang Restaurant. <br />
             Experience the sizzle and soul of authentic Korean BBQ.
           </p>
@@ -55,14 +57,14 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto rounded-full px-10 py-7 text-lg font-bold border-2 border-white bg-white !text-black hover:bg-white/90 hover:!text-black shadow-sm"
+              className="w-full sm:w-auto rounded-full px-10 py-7 text-lg font-bold border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
               onClick={onFindLocation}
             >
               <BilingualText
-                en={<span>Find Location</span>}
-                ko={<span className="text-[12px] font-semibold tracking-wide text-black/70">위치 찾기</span>}
+                en={<span className="text-white">Find Location</span>}
+                ko={<span className="text-[12px] font-semibold tracking-wide text-white">위치 찾기</span>}
                 koTone="normal"
-                className="leading-none"
+                className="leading-none text-white"
                 koClassName="mt-1"
               />
             </Button>

@@ -18,19 +18,13 @@ export default function BilingualText<T extends React.ElementType = "div">({
   className,
   enClassName,
   koClassName,
-  koTone = "muted",
+  koTone: _koTone = "muted",
 }: Props<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof Props<T>>) {
   const Comp = (as ?? "div") as React.ElementType;
   return (
     <Comp className={cn("min-w-0", className)}>
       <div className={cn("min-w-0", enClassName)}>{en}</div>
-      <div
-        className={cn(
-          "min-w-0",
-          koTone === "muted" ? "text-white/65" : "text-white/85",
-          koClassName
-        )}
-      >
+      <div className={cn("min-w-0 text-white", koClassName)}>
         {ko}
       </div>
     </Comp>

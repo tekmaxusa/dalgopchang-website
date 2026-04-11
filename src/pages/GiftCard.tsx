@@ -14,12 +14,12 @@ export default function GiftCard() {
           className="text-center mb-16"
         >
           <span className="text-secondary-heading text-sm mb-4 block">
-            Give the Gift of Flavor <span className="text-black/60 font-semibold">· 기프트 카드</span>
+            Give the Gift of Flavor <span className="text-white font-semibold">· 기프트 카드</span>
           </span>
           <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
-            <span className="text-[#CFC6B4]">GIFT</span> <span className="text-primary">CARDS</span>
+            <span className="text-white">GIFT</span> <span className="text-primary">CARDS</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             Share the authentic Dalgopchang experience with your friends and family. 
             Perfect for any occasion.
           </p>
@@ -39,7 +39,7 @@ export default function GiftCard() {
                 <Gift className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[#CFC6B4] mb-2 font-bold">Premium Dining Experience</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white mb-2 font-bold">Premium Dining Experience</p>
                 <h3 className="text-3xl font-display font-bold">DIGITAL GIFT CARD</h3>
               </div>
             </div>
@@ -59,7 +59,7 @@ export default function GiftCard() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1">Choose Amount</h4>
-                  <p className="text-muted-foreground">Select from our preset values or enter a custom amount.</p>
+                  <p className="text-white">Select from our preset values or enter a custom amount.</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -68,7 +68,7 @@ export default function GiftCard() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1">Personalize</h4>
-                  <p className="text-muted-foreground">Add a custom message for your recipient.</p>
+                  <p className="text-white">Add a custom message for your recipient.</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -77,7 +77,7 @@ export default function GiftCard() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1">Instant Delivery</h4>
-                  <p className="text-muted-foreground">The digital gift card is sent directly to their email.</p>
+                  <p className="text-white">The digital gift card is sent directly to their email.</p>
                 </div>
               </div>
             </div>

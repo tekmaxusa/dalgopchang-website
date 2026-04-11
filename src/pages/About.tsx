@@ -17,7 +17,7 @@ export default function About() {
           <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
             ABOUT <span className="text-gradient">US</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             A journey through flavor, tradition, and the moonlit nights of Seoul.
           </p>
         </motion.div>

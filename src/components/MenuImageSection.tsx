@@ -17,7 +17,7 @@ export default function MenuImageSection({ title, images }: MenuImageSectionProp
     <section className="py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-10">
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-tight text-[#CFC6B4]">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold uppercase tracking-tight text-white">
             {title}
           </h2>
           <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />

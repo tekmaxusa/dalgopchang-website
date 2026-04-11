@@ -33,14 +33,14 @@ export default function Home({ onPageChange }: HomeProps) {
       <section className="py-24 px-6 bg-background relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl aspect-square bg-primary/5 rounded-full blur-3xl -z-10" />
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-8 tracking-tighter">
-            <span className="text-[#CFC6B4]">READY TO TASTE THE</span> <br />
-            <span className="text-gradient">AUTHENTIC SIZZLE?</span>
+          <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-8 tracking-tighter uppercase">
+            <span className="text-white">Ready to taste the</span> <br />
+            <span className="text-primary">authentic sizzle?</span>
           </h2>
-          <p className="text-black/70 font-semibold tracking-wide mb-6">
+          <p className="text-white font-semibold tracking-wide mb-6">
             진짜 한국 BBQ의 맛을 지금 경험해보세요.
           </p>
-          <p className="text-xl text-black/60 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-12 max-w-2xl mx-auto">
             Join us for an unforgettable Korean BBQ experience. 
             Our tables are waiting for you.
           </p>

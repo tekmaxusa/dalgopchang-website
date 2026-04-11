@@ -16,7 +16,7 @@ export default function LocationContact() {
               Visit Us
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-8">
-              <span className="text-[#CFC6B4]">FIND YOUR</span> <span className="text-primary">TABLE</span>
+              <span className="text-white">FIND YOUR</span> <span className="text-primary">TABLE</span>
             </h2>
             
             <div className="space-y-8 mb-10">
@@ -26,7 +26,7 @@ export default function LocationContact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Address</h3>
-                  <p className="text-foreground/80 text-lg">
+                  <p className="text-white text-lg">
                     1060 W Frankford Rd Ste 115, Carrollton, TX 75007, United States
                   </p>
                 </div>
@@ -38,7 +38,7 @@ export default function LocationContact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Hours & Happy Hours</h3>
-                  <p className="text-foreground/80 text-lg">
+                  <p className="text-white text-lg">
                     <span className="text-primary font-bold">Happy Hours: Monday - Friday: 2 pm – 5 pm</span>
                   </p>
                 </div>
@@ -50,7 +50,7 @@ export default function LocationContact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Phone</h3>
-                  <p className="text-foreground/80 text-lg">+1 469-995-5552</p>
+                  <p className="text-white text-lg">+1 469-995-5552</p>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function LocationContact() {
               <div className="absolute left-6 bottom-6">
                 <div className="glass px-4 py-3 rounded-xl border border-white/10">
                   <p className="font-bold text-white">Dalgopchang 달곱창</p>
-                  <p className="text-xs text-[#CFC6B4]">
+                  <p className="text-xs text-white">
                     1060 W Frankford Rd Ste 115, Carrollton, TX 75007
                   </p>
                 </div>

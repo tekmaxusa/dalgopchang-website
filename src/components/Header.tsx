@@ -58,7 +58,7 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                   onClick={() => onPageChange(item.id)}
                   className={cn(
                     "relative text-sm font-semibold uppercase tracking-[0.22em] leading-none transition-colors px-1 py-2",
-                    "text-white/80 hover:text-white active:text-[#e11d48]",
+                    "text-white hover:text-white active:text-[#e11d48]",
                     currentPage === item.id && "text-[#e11d48]"
                   )}
                 >
@@ -96,7 +96,7 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                           }}
                           className={cn(
                             "text-xl font-display font-bold text-left transition-colors",
-                            "text-white/90 hover:text-white active:text-[#e11d48]",
+                            "text-white hover:text-white active:text-[#e11d48]",
                             currentPage === item.id && "text-[#e11d48]"
                           )}
                         >
@@ -107,11 +107,11 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                   </ul>
                 </nav>
                 <div className="mt-auto flex flex-col gap-4">
-                  <div className="flex items-center gap-3 text-muted-foreground">
+                  <div className="flex items-center gap-3 text-white">
                     <Phone className="w-5 h-5" />
                     <span>+82 2-123-4567</span>
                   </div>
-                  <div className="flex items-center gap-3 text-muted-foreground">
+                  <div className="flex items-center gap-3 text-white">
                     <MapPin className="w-5 h-5" />
                     <span>Seoul, South Korea</span>
                   </div>

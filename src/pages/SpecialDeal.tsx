@@ -42,13 +42,13 @@ export default function SpecialDeal() {
           className="text-center mb-16"
         >
           <span className="text-secondary-heading text-sm mb-4 block">
-            Exclusive Offers <span className="text-black/60 font-semibold">· 특별 혜택</span>
+            Exclusive Offers <span className="text-white font-semibold">· 특별 혜택</span>
           </span>
           <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
-            <span className="text-[#CFC6B4]">SPECIAL</span> <span className="text-primary">DEALS</span>
+            <span className="text-white">SPECIAL</span> <span className="text-primary">DEALS</span>
           </h1>
-          <p className="text-xl text-black/70 max-w-2xl mx-auto">
-            Latest promotions and offers. <span className="text-black/60">최신 프로모션을 확인하세요.</span>
+          <p className="text-xl text-white max-w-2xl mx-auto">
+            Latest promotions and offers. <span className="text-white">최신 프로모션을 확인하세요.</span>
           </p>
         </motion.div>
 
@@ -68,21 +68,21 @@ export default function SpecialDeal() {
               <div className="inline-flex flex-col px-3 py-1.5 rounded-full bg-black text-[#e11d48] text-[10px] font-bold uppercase tracking-widest mb-4 w-fit leading-none border border-black/80">
                 <span>{deal.tagEn}</span>
                 {deal.tagKo && (
-                  <span className="mt-1 text-white/70 font-semibold normal-case tracking-normal">
+                  <span className="mt-1 text-white font-semibold normal-case tracking-normal">
                     {deal.tagKo}
                   </span>
                 )}
               </div>
               <BilingualText
                 className="mb-4"
-                en={<h3 className="text-2xl text-black font-display font-bold leading-tight">{deal.titleEn}</h3>}
-                ko={<div className="text-sm text-black/70 font-bold tracking-wide">{deal.titleKo}</div>}
+                en={<h3 className="text-2xl text-white font-display font-bold leading-tight">{deal.titleEn}</h3>}
+                ko={<div className="text-sm text-white font-bold tracking-wide">{deal.titleKo}</div>}
                 koClassName="mt-1"
               />
               <BilingualText
                 className="mb-8 flex-1 leading-relaxed"
-                en={<p className="text-black/70">{deal.descriptionEn}</p>}
-                ko={<p className="text-black/60">{deal.descriptionKo}</p>}
+                en={<p className="text-white">{deal.descriptionEn}</p>}
+                ko={<p className="text-white">{deal.descriptionKo}</p>}
               />
             </motion.div>
           ))}

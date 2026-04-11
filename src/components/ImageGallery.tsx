@@ -36,11 +36,11 @@ export default function ImageGallery() {
             <span className="text-secondary-heading text-sm mb-2 block">
               Visual Experience
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-extrabold">
-              <span className="text-[#CFC6B4]">THE ART OF</span> <span className="text-gradient">GOPCHANG</span>
+            <h2 className="text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight">
+              <span className="text-white">The art of</span> <span className="text-primary">Gopchang</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-md">
+          <p className="text-white max-w-md">
             Every dish is a masterpiece of tradition and flavor, prepared with the finest ingredients and a passion for excellence.
           </p>
         </div>

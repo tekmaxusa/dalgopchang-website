@@ -19,12 +19,12 @@ export default function Blog({ onPostClick }: BlogProps) {
           className="text-center mb-16"
         >
           <span className="text-secondary-heading text-sm mb-4 block">
-            Dalgopchang Journal <span className="text-black/60 font-semibold">· 달곱창 이야기</span>
+            Dalgopchang Journal <span className="text-white font-semibold">· 달곱창 이야기</span>
           </span>
           <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
-            <span className="text-[#CFC6B4]">OUR</span> <span className="text-primary">BLOG</span>
+            <span className="text-white">OUR</span> <span className="text-primary">BLOG</span>
           </h1>
-          <p className="text-xl text-black/70 max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             Insights, stories, and the culture behind the best Korean Gopchang experience.
           </p>
         </motion.div>
@@ -51,7 +51,7 @@ export default function Blog({ onPostClick }: BlogProps) {
                   />
                 </div>
                 <CardContent className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-4 text-xs text-[#CFC6B4] mb-4 uppercase tracking-widest font-bold">
+                  <div className="flex items-center gap-4 text-xs text-white mb-4 uppercase tracking-widest font-bold">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {post.date}
@@ -64,13 +64,13 @@ export default function Blog({ onPostClick }: BlogProps) {
                   <h3 className="text-xl text-white font-bold mb-4 line-clamp-2 group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-white/70 mb-6 line-clamp-3 text-sm leading-relaxed">
+                  <p className="text-white mb-6 line-clamp-3 text-sm leading-relaxed">
                     {post.excerpt}
                   </p>
                   <div className="mt-auto pt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest group/btn">
                     <BilingualText
                       en={<span>Read More</span>}
-                      ko={<span className="text-[11px] font-semibold tracking-wide text-white/60">더 보기</span>}
+                      ko={<span className="text-[11px] font-semibold tracking-wide text-white">더 보기</span>}
                       koTone="normal"
                       className="leading-none"
                       koClassName="ml-2"

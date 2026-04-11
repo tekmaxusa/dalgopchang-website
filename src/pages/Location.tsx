@@ -12,12 +12,12 @@ export default function Location() {
           className="text-center"
         >
           <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
-            Visit Us <span className="text-white/60 font-semibold">· 오시는 길</span>
+            Visit Us <span className="text-white font-semibold">· 오시는 길</span>
           </span>
           <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
             OUR <span className="text-gradient">LOCATION</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             <BilingualText
               en={
                 <span>

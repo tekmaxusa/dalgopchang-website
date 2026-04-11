@@ -9,70 +9,64 @@ interface AboutSectionProps {
 
 export default function AboutSection({ isShort, onReadMore }: AboutSectionProps) {
   return (
-    <section className="py-24 px-6 bg-muted/30">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="order-2 lg:order-1"
-          >
-            <span className="text-secondary-heading text-sm mb-4 block">
-              Our Story
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-8 leading-tight">
-              <span className="text-[#CFC6B4]">TRADITION MEETS</span> <br />
-              <span className="text-primary">MODERN FLAVOR</span>
-            </h2>
-            <div className="space-y-6 text-lg text-foreground/90 leading-relaxed">
+    <section className="relative bg-black text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 lg:min-h-[min(88vh,880px)]">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="order-2 lg:order-1 px-6 py-20 lg:py-16 lg:pr-14 flex flex-col justify-center relative"
+        >
+          <span className="text-secondary-heading text-sm mb-4 block">OUR STORY</span>
+          <h2 className="text-4xl md:text-5xl xl:text-6xl font-display font-extrabold mb-8 leading-[1.05] tracking-tight uppercase">
+            <span className="text-white block">TRADITION MEETS</span>
+            <span className="text-primary block">MODERN FLAVOR</span>
+          </h2>
+          <div className="space-y-6 text-base md:text-lg text-white leading-relaxed max-w-xl">
+            <p>
+              Dalgopchang (달곱창) brings the authentic taste of Korean street food culture to a premium dining
+              setting. Specializing in Gopchang (grilled small intestines), we pride ourselves on our meticulous
+              preparation and traditional secret marinades.
+            </p>
+            <p>
+              In Korea, Gopchang is more than just food; it&apos;s a social ritual. The sizzle of the grill, the
+              aroma of charcoal, and the shared experience of cooking together create memories that last.
+            </p>
+            {!isShort && (
               <p>
-                Dalgopchang (달곱창) was born from a simple desire: to bring the most authentic and premium Korean Gopchang experience to the table. Our name, "Dal" (Moon), represents the late-night gatherings and the warm glow of the grill that brings people together.
+                Our mission is to preserve these traditions while elevating the experience with the finest ingredients
+                and a modern, welcoming atmosphere.
               </p>
-              <p>
-                We specialize in premium beef small intestines, large intestines, and heart, prepared using traditional Korean techniques that have been perfected over generations. Our secret lies in the meticulous cleaning process and our signature fruit-based marinade.
-              </p>
-              {!isShort && (
-                <>
-                  <p>
-                    In Korean culture, Gopchang is more than just a meal; it's a social ritual. It's about the sound of the sizzle, the aroma of the grill, and the joy of sharing a drink with friends. At Dalgopchang, we've elevated this street-food classic into a premium dining experience.
-                  </p>
-                  <p>
-                    Whether you're a lifelong fan of Korean BBQ or a curious newcomer, we invite you to join us for an evening of bold flavors and warm hospitality.
-                  </p>
-                </>
-              )}
-            </div>
+            )}
             {isShort && (
-              <Button 
-                variant="link" 
-                className="text-primary p-0 h-auto mt-8 text-lg font-bold group"
+              <Button
+                variant="link"
+                className="text-primary p-0 h-auto mt-4 text-lg font-bold group justify-start"
                 onClick={onReadMore}
               >
                 Read our full story
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
               </Button>
             )}
-          </motion.div>
+          </div>
+          <div
+            className="pointer-events-none hidden lg:block absolute bottom-10 right-10 w-px h-20 bg-primary"
+            aria-hidden
+          />
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="order-1 lg:order-2 relative"
-          >
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
-              <img
-                src={withBaseUrl("/photos/about-our-story.png")}
-                alt="Dalgopchang dining room"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
-            <div className="absolute -top-6 -right-6 w-48 h-48 bg-accent/10 rounded-full blur-3xl -z-10" />
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="order-1 lg:order-2 relative min-h-[min(52vh,520px)] lg:min-h-0"
+        >
+          <img
+            src={withBaseUrl("/photos/about-our-story.png")}
+            alt="Dalgopchang dining room"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </motion.div>
       </div>
     </section>
   );

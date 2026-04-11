@@ -52,7 +52,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
             />
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-black/60 mb-6 uppercase tracking-widest font-bold">
+          <div className="flex items-center gap-4 text-xs text-white mb-6 uppercase tracking-widest font-bold">
             <span className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               {post.date}
@@ -63,7 +63,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-display font-extrabold mb-12 leading-tight tracking-tighter text-black">
+          <h1 className="text-4xl md:text-6xl font-display font-extrabold mb-12 leading-tight tracking-tighter text-white">
             {post.title}
           </h1>
 
@@ -80,7 +80,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
                 );
               }
               return (
-                <p key={i} className="text-black/70 text-lg md:text-xl leading-relaxed mb-6">
+                <p key={i} className="text-white text-lg md:text-xl leading-relaxed mb-6">
                   {trimmed}
                 </p>
               );
