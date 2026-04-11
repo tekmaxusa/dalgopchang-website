@@ -6,7 +6,7 @@ import BilingualText from "../components/BilingualText";
 
 export default function GiftCard() {
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-[var(--header-height)] pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

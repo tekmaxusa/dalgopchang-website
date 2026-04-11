@@ -6,6 +6,18 @@ export type MenuItem = {
   imageSrc?: string;
 };
 
+/** Shown on menu cards when no price is set in data (replace per item in `MENU_ITEM_SECTIONS`). */
+export function displayMenuPrice(item: MenuItem): string {
+  const p = item.price?.trim();
+  return p || "MP";
+}
+
+export function getMenuDescription(item: MenuItem): string | null {
+  const d = item.description?.trim();
+  if (!d || d === "N/A." || d === "N/A") return null;
+  return d;
+}
+
 export type MenuItemSection = {
   id: string;
   title: string;
@@ -22,21 +34,36 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
         en: "Dallas Combo",
         description: "Small & large intestine of cow / Abomasum / Tripe.",
         imageSrc: "/photos/kbbq-3.png",
+        price: "$89.99",
       },
       {
         ko: "텍사스 콤보",
         en: "Texas Combo",
         description: "Small & large intestine of cow / Abomasum / Tripe.",
         imageSrc: "/photos/kbbq-2.png",
+        price: "$89.99",
       },
       {
         ko: "카우보이 콤보",
         en: "Cowboy Combo",
         description: "Prime ribeye / Prime brisket / Prime rib finger / Prime rib.",
         imageSrc: "/photos/kbbq-6.png",
+        price: "$129.99",
       },
-      { ko: "소고기 콤보", en: "Beef Combo", description: "Prime ribeye / Brisket / Rib finger.", imageSrc: "/photos/kbbq-10.png" },
-      { ko: "돼지 콤보", en: "Pork Combo", description: "Pork belly / Pork jowl / Pork Collar.", imageSrc: "/photos/kbbq-7.png" },
+      {
+        ko: "소고기 콤보",
+        en: "Beef Combo",
+        description: "Prime ribeye / Brisket / Rib finger.",
+        imageSrc: "/photos/kbbq-10.png",
+        price: "$79.99",
+      },
+      {
+        ko: "돼지 콤보",
+        en: "Pork Combo",
+        description: "Pork belly / Pork jowl / Pork Collar.",
+        imageSrc: "/photos/kbbq-7.png",
+        price: "$69.99",
+      },
     ],
   },
   {

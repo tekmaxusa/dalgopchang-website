@@ -133,6 +133,15 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: oklch(0.577 0.215 17.385);
+
+  /* Matches fixed header (logo + py-4); use for sticky bars + page padding */
+  --header-height: 6rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 7rem;
+  }
 }
 
 .dark {
@@ -174,7 +183,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-sans;
+    @apply font-sans overflow-x-hidden;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;

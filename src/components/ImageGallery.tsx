@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Maximize2 } from "lucide-react";
 import { withBaseUrl } from "@/lib/asset";
+import { cn } from "@/lib/utils";
 
 interface GalleryImage {
   src: string;
@@ -29,58 +30,68 @@ const images: GalleryImage[] = [
 
 export default function ImageGallery() {
   return (
-    <section className="py-24 px-6 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+    <section className="bg-background px-4 py-12 sm:px-6 md:py-16">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6 flex flex-col justify-between gap-3 md:mb-8 md:flex-row md:items-end">
           <div>
-            <span className="text-secondary-heading text-sm mb-2 block">
-              Visual Experience
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-extrabold uppercase tracking-tight">
+            <span className="text-secondary-heading mb-2 block text-sm">Visual Experience</span>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-5xl">
               <span className="text-white">The art of</span> <span className="text-primary">Gopchang</span>
             </h2>
           </div>
-          <p className="text-white max-w-md">
-            Every dish is a masterpiece of tradition and flavor, prepared with the finest ingredients and a passion for excellence.
+          <p className="max-w-md text-sm text-white sm:text-base">
+            Every dish is a masterpiece of tradition and flavor, prepared with the finest ingredients and a passion for
+            excellence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Single-row horizontal carousel: less vertical scroll; swipe on touch */}
+        <div
+          className={cn(
+            "-mx-1 flex gap-3 overflow-x-auto px-1 pb-2",
+            "scroll-pl-3 scroll-pr-3 snap-x snap-mandatory",
+            "[-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+            "sm:gap-4 md:scroll-pl-4 md:scroll-pr-4"
+          )}
+          role="region"
+          aria-label="Photo gallery, swipe horizontally"
+        >
           {images.map((image, index) => (
             <Dialog key={index}>
               <DialogTrigger
                 render={
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="relative aspect-square overflow-hidden rounded-2xl group cursor-pointer border border-white/10"
-                  />
+                    transition={{ delay: index * 0.05 }}
+                    className={cn(
+                      "group relative aspect-[4/3] w-[min(82vw,18.5rem)] shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl border border-white/10 sm:w-64 md:w-72"
+                    )}
+                  >
+                    <img
+                      src={withBaseUrl(image.src)}
+                      alt={image.alt}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-4 py-2 backdrop-blur-sm">
+                        <Maximize2 className="h-4 w-4 text-[#e11d48]" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-white">Zoom</span>
+                      </div>
+                    </div>
+                  </motion.div>
                 }
-              >
-                <img
-                  src={withBaseUrl(image.src)}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-4 py-2 backdrop-blur-sm">
-                    <Maximize2 className="w-4 h-4 text-[#e11d48]" />
-                    <span className="text-white font-bold tracking-widest uppercase text-xs">
-                      Zoom
-                    </span>
-                  </div>
-                </div>
-              </DialogTrigger>
+              />
 
               <DialogContent
                 overlayClassName="bg-black/85 supports-backdrop-filter:backdrop-blur-md"
-                className="!fixed !inset-0 !top-0 !left-0 !right-0 !bottom-0 !z-50 !translate-x-0 !translate-y-0 !w-screen !h-screen !max-w-none !rounded-none bg-black/98 border-none !p-0 !ring-0 flex items-center justify-center"
+                className="!fixed !inset-0 !top-0 !left-0 !right-0 !bottom-0 !z-50 !h-screen !w-screen !max-w-none !translate-x-0 !translate-y-0 !rounded-none !border-none !p-0 !ring-0 flex items-center justify-center bg-black/98"
               >
-                <div className="relative h-screen w-screen flex items-center justify-center">
+                <div className="relative flex h-screen w-screen items-center justify-center">
                   <img
                     src={withBaseUrl(image.src)}
                     alt={image.alt}

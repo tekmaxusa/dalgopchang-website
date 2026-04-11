@@ -4,7 +4,7 @@ import BilingualText from "../components/BilingualText";
 
 export default function Location() {
   return (
-    <main className="pt-32">
+    <main className="pt-[var(--header-height)]">
       <div className="max-w-7xl mx-auto px-6 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

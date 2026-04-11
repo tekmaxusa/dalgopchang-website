@@ -24,17 +24,17 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-5xl md:text-8xl font-display font-extrabold mb-6 tracking-tighter leading-none">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-extrabold mb-4 sm:mb-6 tracking-tighter leading-none">
             <span className="text-white">DALGOPCHANG</span>{" "}
             <span className="text-primary block md:inline">달곱창</span>
           </h1>
-          <p className="text-lg md:text-2xl text-white mb-10 max-w-2xl mx-auto font-bold tracking-tight">
+          <p className="text-base sm:text-lg md:text-2xl text-white mb-8 sm:mb-10 max-w-2xl mx-auto font-bold tracking-tight px-1">
             Best Korean Gopchang Restaurant. <br />
             Experience the sizzle and soul of authentic Korean BBQ.
           </p>
@@ -57,7 +57,7 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto rounded-full px-10 py-7 text-lg font-bold border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
+              className="w-full sm:w-auto rounded-full px-10 py-7 text-lg font-bold border-2 !border-primary bg-transparent text-white shadow-[0_0_24px_-4px_rgba(225,29,72,0.45)] hover:bg-primary/15 hover:!border-primary hover:text-white"
               onClick={onFindLocation}
             >
               <BilingualText

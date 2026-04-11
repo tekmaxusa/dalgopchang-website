@@ -37,8 +37,9 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "bg-black py-3" : "bg-black"
+        "fixed top-0 left-0 right-0 z-50 flex min-h-[var(--header-height)] items-center px-4 sm:px-6 py-4",
+        "transition-[background-color,box-shadow] duration-300",
+        isScrolled ? "bg-black/95 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.85)] backdrop-blur-sm" : "bg-black"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -107,13 +108,18 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                   </ul>
                 </nav>
                 <div className="mt-auto flex flex-col gap-4">
-                  <div className="flex items-center gap-3 text-white">
-                    <Phone className="w-5 h-5" />
-                    <span>+82 2-123-4567</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <MapPin className="w-5 h-5" />
-                    <span>Seoul, South Korea</span>
+                  <a
+                    href="tel:+14699955552"
+                    className="flex items-start gap-3 text-white hover:text-primary transition-colors"
+                  >
+                    <Phone className="w-5 h-5 shrink-0 mt-0.5" />
+                    <span className="text-sm font-semibold leading-snug">+1 469-995-5552</span>
+                  </a>
+                  <div className="flex items-start gap-3 text-white">
+                    <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-primary" />
+                    <span className="text-sm leading-relaxed">
+                      1060 W Frankford Rd Ste 115, Carrollton, TX 75007
+                    </span>
                   </div>
                   <div className="flex gap-4 mt-4">
                     <Instagram className="w-6 h-6 text-primary" />

@@ -56,14 +56,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white">
       <Header currentPage={currentPage} onPageChange={handlePageChange} />
-      
+      {/* Page transition: opacity only — `transform` (e.g. y) on a parent breaks `position: sticky` (menu category bar). */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage + (selectedPostSlug || "")}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
         >
           {renderPage()}
         </motion.div>

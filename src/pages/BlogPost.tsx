@@ -14,7 +14,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
 
   if (!post) {
     return (
-      <main className="pt-32 pb-24 text-center">
+      <main className="pt-[var(--header-height)] pb-24 text-center">
         <h1 className="text-4xl font-bold mb-8">Post not found</h1>
         <Button onClick={onBack}>Back to Blog</Button>
       </main>
@@ -22,7 +22,7 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
   }
 
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-[var(--header-height)] pb-24">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
