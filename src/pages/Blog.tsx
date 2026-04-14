@@ -70,10 +70,9 @@ export default function Blog({ onPostClick }: BlogProps) {
                   <div className="mt-auto pt-4 flex items-center text-primary font-bold text-sm uppercase tracking-widest group/btn">
                     <BilingualText
                       en={<span>Read More</span>}
-                      ko={<span className="text-[11px] font-semibold tracking-wide text-white">더 보기</span>}
+                      ko={<span className="text-sm font-semibold tracking-wide text-white">더 보기</span>}
                       koTone="normal"
-                      className="leading-none"
-                      koClassName="ml-2"
+                      className="flex flex-row items-baseline gap-2 leading-none"
                     />
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </div>

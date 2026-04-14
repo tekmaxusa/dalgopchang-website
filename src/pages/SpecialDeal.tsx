@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { Tag, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import BilingualText from "../components/BilingualText";
 
 export default function SpecialDeal() {
@@ -12,7 +11,7 @@ export default function SpecialDeal() {
       descriptionKo: "돼지국밥 — 월–토 — $9.99 (소주 $9.99)",
       tagEn: "Mon–Sat",
       tagKo: "월–토",
-      icon: <Sparkles className="w-6 h-6 text-[#e11d48]" />
+      icon: <Sparkles className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
     },
     {
       titleEn: "Happy Hour Promotion",
@@ -21,7 +20,7 @@ export default function SpecialDeal() {
       descriptionKo: "월–토 3pm–6pm — 곱창 / 대창 / 삼겹살 / 돼지갈비 — $14.99",
       tagEn: "Mon–Sat • 3pm–6pm",
       tagKo: "월–토 • 3pm–6pm",
-      icon: <Tag className="w-6 h-6 text-[#e11d48]" />
+      icon: <Tag className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
     },
     {
       titleEn: "Cowboy Combo",
@@ -29,62 +28,94 @@ export default function SpecialDeal() {
       descriptionEn: "Premium BBQ dining — Premium beef combo — $129.99",
       descriptionKo: "프리미엄 BBQ 다이닝 — 프리미엄 소고기 콤보 — $129.99",
       tagEn: "$129.99",
-      icon: <Sparkles className="w-6 h-6 text-[#e11d48]" />
-    }
+      icon: <Sparkles className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
+    },
   ];
 
   return (
-    <main className="pt-[var(--header-height)] pb-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <main className="relative overflow-hidden pb-24 pt-[var(--header-height)]">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[min(55vh,520px)] bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,oklch(0.577_0.215_17.385/0.22),transparent_65%)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="mb-14 text-center sm:mb-20"
         >
-          <span className="text-secondary-heading text-sm mb-4 block">
-            Exclusive Offers <span className="text-white font-semibold">· 특별 혜택</span>
+          <span className="text-secondary-heading mb-4 block text-sm sm:text-base">
+            Exclusive Offers <span className="font-semibold text-white">· 특별 혜택</span>
           </span>
-          <h1 className="text-5xl md:text-7xl font-display font-extrabold mb-6 tracking-tighter">
+          <h1 className="mb-6 font-display text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-white">SPECIAL</span> <span className="text-primary">DEALS</span>
           </h1>
-          <p className="text-xl text-white max-w-2xl mx-auto">
-            Latest promotions and offers. <span className="text-white">최신 프로모션을 확인하세요.</span>
+          <p className="mx-auto max-w-2xl text-lg text-white/90 sm:text-xl md:text-2xl">
+            Latest promotions and offers.{" "}
+            <span className="text-white">최신 프로모션을 확인하세요.</span>
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-10">
           {deals.map((deal, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+            <motion.article
+              key={deal.titleEn}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08, duration: 0.45 }}
               viewport={{ once: true }}
-              className="bg-muted/30 border border-white/5 rounded-3xl p-8 flex flex-col h-full hover:border-primary/30 transition-all duration-300 group"
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-black/55 p-8 shadow-[0_28px_70px_-40px_rgba(0,0,0,0.95)] backdrop-blur-sm transition-all duration-300 hover:border-primary/35 hover:shadow-[0_32px_80px_-36px_rgba(225,29,72,0.18)]"
             >
-              <div className="w-12 h-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-[#e11d48] mb-6 group-hover:scale-110 transition-transform">
+              <div
+                className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary/70 to-transparent opacity-80 transition-opacity group-hover:opacity-100"
+                aria-hidden
+              />
+
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-black/60 text-primary shadow-inner transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/25">
                 {deal.icon}
               </div>
-              <div className="inline-flex flex-col px-3 py-1.5 rounded-full bg-black text-[#e11d48] text-[10px] font-bold uppercase tracking-widest mb-4 w-fit leading-none border border-black/80">
-                <span>{deal.tagEn}</span>
+
+              <div className="mb-5 inline-flex w-fit max-w-full flex-col rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-left leading-tight">
+                <span className="text-xs font-bold uppercase tracking-[0.14em] text-primary sm:text-sm">
+                  {deal.tagEn}
+                </span>
                 {deal.tagKo && (
-                  <span className="mt-1 text-white font-semibold normal-case tracking-normal">
+                  <span className="mt-1 text-xs font-semibold tracking-normal text-white/95 sm:text-sm">
                     {deal.tagKo}
                   </span>
                 )}
               </div>
+
               <BilingualText
-                className="mb-4"
-                en={<h3 className="text-2xl text-white font-display font-bold leading-tight">{deal.titleEn}</h3>}
-                ko={<div className="text-sm text-white font-bold tracking-wide">{deal.titleKo}</div>}
-                koClassName="mt-1"
+                className="mb-6"
+                en={
+                  <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl">
+                    {deal.titleEn}
+                  </h2>
+                }
+                ko={
+                  <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl">
+                    {deal.titleKo}
+                  </h2>
+                }
+                koClassName="mt-2"
               />
+
               <BilingualText
-                className="mb-8 flex-1 leading-relaxed"
-                en={<p className="text-white">{deal.descriptionEn}</p>}
-                ko={<p className="text-white">{deal.descriptionKo}</p>}
+                className="mt-auto flex-1 leading-relaxed"
+                en={
+                  <p className="text-base text-white/95 sm:text-lg md:text-[1.125rem]">
+                    {deal.descriptionEn}
+                  </p>
+                }
+                ko={
+                  <p className="text-base text-white/95 sm:text-lg md:text-[1.125rem]">{deal.descriptionKo}</p>
+                }
+                koClassName="mt-3"
               />
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

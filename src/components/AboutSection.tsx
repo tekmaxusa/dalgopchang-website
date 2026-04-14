@@ -15,7 +15,7 @@ export default function AboutSection({ isShort, onReadMore }: AboutSectionProps)
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="order-2 lg:order-1 px-6 py-20 lg:py-16 lg:pr-14 flex flex-col justify-center relative"
+          className="order-2 lg:order-1 px-6 pt-20 pb-14 lg:py-16 lg:pr-14 flex flex-col justify-center relative"
         >
           <span className="text-secondary-heading text-sm mb-4 block">OUR STORY</span>
           <h2 className="text-4xl md:text-5xl xl:text-6xl font-display font-extrabold mb-8 leading-[1.05] tracking-tight uppercase">

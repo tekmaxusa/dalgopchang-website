@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
 import BilingualText from "./BilingualText";
 import { withBaseUrl } from "@/lib/asset";
 
@@ -13,13 +12,17 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src={withBaseUrl("/hero.png")}
-          alt="Dalgopchang storefront"
-          className="w-full h-full object-cover"
-          decoding="async"
-          fetchPriority="high"
-        />
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={withBaseUrl("/hero.png")}
+          aria-hidden
+        >
+          <source src={withBaseUrl("/hero-video-1.mp4")} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/60" aria-hidden />
       </div>
 
@@ -42,27 +45,26 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white rounded-full px-10 py-7 text-lg font-bold group"
+              className="w-full sm:w-auto !h-auto min-h-0 bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-4 sm:px-10 sm:py-4 text-base font-bold"
               onClick={onViewMenu}
             >
               <BilingualText
                 en={<span>View Menu</span>}
-                ko={<span className="text-[12px] font-semibold tracking-wide">메뉴 보기</span>}
+                ko={<span className="text-base font-semibold tracking-wide">메뉴 보기</span>}
                 koTone="normal"
                 className="leading-none"
                 koClassName="mt-1"
               />
-              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto rounded-full px-10 py-7 text-lg font-bold border-2 !border-primary bg-transparent text-white shadow-[0_0_24px_-4px_rgba(225,29,72,0.45)] hover:bg-primary/15 hover:!border-primary hover:text-white"
+              className="w-full sm:w-auto !h-auto min-h-0 rounded-full px-8 py-4 sm:px-10 sm:py-4 text-base font-bold border-2 !border-primary bg-transparent text-white shadow-[0_0_24px_-4px_rgba(225,29,72,0.45)] hover:bg-primary/15 hover:!border-primary hover:text-white"
               onClick={onFindLocation}
             >
               <BilingualText
                 en={<span className="text-white">Find Location</span>}
-                ko={<span className="text-[12px] font-semibold tracking-wide text-white">위치 찾기</span>}
+                ko={<span className="text-base font-semibold tracking-wide text-white">위치 찾기</span>}
                 koTone="normal"
                 className="leading-none text-white"
                 koClassName="mt-1"

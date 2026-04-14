@@ -135,12 +135,12 @@
   --sidebar-ring: oklch(0.577 0.215 17.385);
 
   /* Matches fixed header (logo + py-4); use for sticky bars + page padding */
-  --header-height: 6rem;
+  --header-height: 7rem;
 }
 
 @media (min-width: 768px) {
   :root {
-    --header-height: 7rem;
+    --header-height: 8rem;
   }
 }
 

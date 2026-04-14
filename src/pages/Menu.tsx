@@ -34,7 +34,7 @@ function MenuItemCards({ items }: { items: MenuItem[] }) {
                   viewport={{ once: true }}
                   className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/50 text-left shadow-[0_18px_55px_-35px_rgba(0,0,0,0.95)]"
                 >
-                  <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden bg-black/40">
+                  <div className="relative h-[150px] w-full shrink-0 overflow-hidden bg-black/40 sm:h-[170px] md:h-[180px]">
                     <img
                       src={withBaseUrl(src)}
                       alt={`${item.ko} — ${item.en}`}
@@ -51,13 +51,13 @@ function MenuItemCards({ items }: { items: MenuItem[] }) {
                     </div>
                   </div>
 
-                  <div className="flex flex-1 flex-col gap-1.5 border-t border-white/10 p-4">
-                    <div className="text-[18px] font-bold leading-snug tracking-tight text-white">{item.ko}</div>
-                    <div className="text-[16px] font-semibold leading-snug text-white">{item.en}</div>
+                  <div className="flex flex-1 flex-col gap-2 border-t border-white/10 p-4 sm:p-5">
+                    <div className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">{item.ko}</div>
+                    <div className="text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl">{item.en}</div>
                     {desc && (
-                      <p className="line-clamp-3 text-sm leading-relaxed text-white/90">{desc}</p>
+                      <p className="line-clamp-3 text-base leading-relaxed text-white/90 sm:text-[17px]">{desc}</p>
                     )}
-                    <div className="mt-auto pt-2 text-[15px] font-extrabold tabular-nums text-primary">{price}</div>
+                    <div className="mt-auto pt-2 text-lg font-extrabold tabular-nums text-primary sm:text-xl">{price}</div>
                   </div>
                 </motion.div>
               }
@@ -150,9 +150,8 @@ export default function Menu() {
         <div className="mx-auto max-w-7xl px-3 sm:px-6">
           <div
             className={cn(
-              "flex gap-2 sm:gap-3",
-              "overflow-x-auto overflow-y-hidden pb-0.5 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-              "sm:flex-wrap sm:justify-center sm:overflow-visible"
+              "flex flex-wrap items-center justify-center gap-2 gap-y-2.5 sm:gap-3",
+              "pb-0.5"
             )}
           >
             {categories.map((cat) => (
@@ -161,8 +160,8 @@ export default function Menu() {
                 variant={activeCategory === cat.id ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat.id)}
                 className={cn(
-                  "shrink-0 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all duration-300",
-                  "sm:px-6 sm:py-2 sm:text-xs sm:tracking-widest",
+                  "shrink-0 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300",
+                  "sm:px-6 sm:py-2.5 sm:text-sm sm:tracking-widest",
                   activeCategory === cat.id
                     ? "bg-primary text-white shadow-lg shadow-primary/20 sm:scale-105"
                     : "border-white/15 text-white hover:border-primary/50 hover:text-primary"

@@ -84,7 +84,7 @@ export default function GiftCard() {
             <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white rounded-full px-10 py-7 text-lg font-bold group">
               <BilingualText
                 en={<span>Purchase Now</span>}
-                ko={<span className="text-[12px] font-semibold tracking-wide">지금 구매하기</span>}
+                ko={<span className="text-lg font-semibold tracking-wide">지금 구매하기</span>}
                 koTone="normal"
                 className="leading-none"
                 koClassName="mt-1"

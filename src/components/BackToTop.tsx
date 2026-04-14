@@ -19,11 +19,11 @@ export default function BackToTop() {
       type="button"
       size="icon"
       variant="default"
-      className="fixed bottom-6 right-4 z-40 h-12 w-12 rounded-full border border-white/25 bg-primary text-white shadow-[0_6px_24px_rgba(225,29,72,0.55),0_2px_8px_rgba(0,0,0,0.35)] hover:bg-primary/90 sm:bottom-8 sm:right-8"
+      className="fixed bottom-6 right-4 z-40 h-11 w-11 rounded-full border border-white/25 bg-primary text-white shadow-[0_6px_20px_rgba(225,29,72,0.45),0_2px_8px_rgba(0,0,0,0.3)] hover:bg-primary/90 sm:bottom-8 sm:right-8"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="!h-5 !w-5" strokeWidth={2.25} aria-hidden />
     </Button>
   );
 }

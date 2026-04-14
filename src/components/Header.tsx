@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, Instagram, Phone, MapPin } from "lucide-react";
+import { Menu, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import { GOOGLE_MAPS_PLACE_URL } from "@/lib/maps";
 
 interface NavItem {
   label: string;
@@ -14,7 +15,6 @@ const navItems: NavItem[] = [
   { label: "Home", id: "home" },
   { label: "Menu", id: "menu" },
   { label: "Special Deal", id: "special-deal" },
-  { label: "Gift Card", id: "gift-card" },
   { label: "Blog", id: "blog" },
 ];
 
@@ -58,7 +58,7 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                 <button
                   onClick={() => onPageChange(item.id)}
                   className={cn(
-                    "relative px-1 py-2 text-sm font-semibold uppercase leading-none tracking-[0.22em] transition-colors",
+                    "relative px-1 py-2 text-base font-semibold uppercase leading-none tracking-[0.2em] transition-colors lg:text-lg lg:tracking-[0.18em]",
                     "text-white hover:text-white active:text-[#e11d48]",
                     currentPage === item.id && "text-[#e11d48]"
                   )}
@@ -81,10 +81,10 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
           <Sheet>
             <SheetTrigger
               render={
-                <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0 text-foreground" aria-label="Open menu" />
+                <Button variant="ghost" size="icon" className="h-14 w-14 shrink-0 text-foreground [&_svg]:!size-10" aria-label="Open menu" />
               }
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="!h-10 !w-10" strokeWidth={2.5} aria-hidden />
             </SheetTrigger>
             <SheetContent side="right" className="bg-background border-border p-0">
               <div className="flex flex-col h-full p-8">
@@ -119,15 +119,17 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                     <Phone className="w-5 h-5 shrink-0 mt-0.5" />
                     <span className="text-sm font-semibold leading-snug">+1 469-995-5552</span>
                   </a>
-                  <div className="flex items-start gap-3 text-white">
+                  <a
+                    href={GOOGLE_MAPS_PLACE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 text-white hover:text-primary transition-colors"
+                  >
                     <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-primary" />
                     <span className="text-sm leading-relaxed">
                       1060 W Frankford Rd Ste 115, Carrollton, TX 75007
                     </span>
-                  </div>
-                  <div className="flex gap-4 mt-4">
-                    <Instagram className="w-6 h-6 text-primary" />
-                  </div>
+                  </a>
                 </div>
               </div>
             </SheetContent>
