@@ -1,34 +1,17 @@
 import { motion } from "motion/react";
-import { Tag, Sparkles } from "lucide-react";
+import { Tag } from "lucide-react";
 import BilingualText from "../components/BilingualText";
 
 export default function SpecialDeal() {
   const deals = [
     {
-      titleEn: "Lunch Special",
-      titleKo: "런치스페셜",
-      descriptionEn: "Pork soup (돼지국밥) — Mon–Sat — $9.99 (Soju: $9.99)",
-      descriptionKo: "돼지국밥 — 월–토 — $9.99 (소주 $9.99)",
-      tagEn: "Mon–Sat",
-      tagKo: "월–토",
-      icon: <Sparkles className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
-    },
-    {
-      titleEn: "Happy Hour Promotion",
-      titleKo: "4월 스페셜",
-      descriptionEn: "Mon–Sat 3pm–6pm — Gopchang / Daechang / Samgyeopsal / Pork rib — $14.99",
-      descriptionKo: "월–토 3pm–6pm — 곱창 / 대창 / 삼겹살 / 돼지갈비 — $14.99",
-      tagEn: "Mon–Sat • 3pm–6pm",
-      tagKo: "월–토 • 3pm–6pm",
+      titleEn: "Happy Hour",
+      titleKo: "해피 아워",
+      descriptionEn: "Small intestines — $14.99\nLarge intestines — $14.99",
+      descriptionKo: "소곱창 — $14.99\n소대창 — $14.99",
+      tagEn: "Mon–Fri • 2pm–5pm",
+      tagKo: "월–금 • 2pm–5pm",
       icon: <Tag className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
-    },
-    {
-      titleEn: "Cowboy Combo",
-      titleKo: "카우보이 콤보",
-      descriptionEn: "Premium BBQ dining — Premium beef combo — $129.99",
-      descriptionKo: "프리미엄 BBQ 다이닝 — 프리미엄 소고기 콤보 — $129.99",
-      tagEn: "$129.99",
-      icon: <Sparkles className="h-7 w-7 text-primary sm:h-8 sm:w-8" strokeWidth={1.75} />,
     },
   ];
 
@@ -44,21 +27,20 @@ export default function SpecialDeal() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-14 text-center sm:mb-20"
+          className="mb-14 pt-10 text-center sm:mb-20 sm:pt-14 md:pt-16"
         >
           <span className="text-secondary-heading mb-4 block text-sm sm:text-base">
-            Exclusive Offers <span className="font-semibold text-white">· 특별 혜택</span>
+            Exclusive Offers
           </span>
           <h1 className="mb-6 font-display text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-white">SPECIAL</span> <span className="text-primary">DEALS</span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-white/90 sm:text-xl md:text-2xl">
-            Latest promotions and offers.{" "}
-            <span className="text-white">최신 프로모션을 확인하세요.</span>
+            Latest promotions and offers.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-10">
+        <div className="mx-auto grid max-w-lg grid-cols-1 gap-8">
           {deals.map((deal, index) => (
             <motion.article
               key={deal.titleEn}
@@ -106,12 +88,14 @@ export default function SpecialDeal() {
               <BilingualText
                 className="mt-auto flex-1 leading-relaxed"
                 en={
-                  <p className="text-base text-white/95 sm:text-lg md:text-[1.125rem]">
+                  <p className="whitespace-pre-line text-base text-white/95 sm:text-lg md:text-[1.125rem]">
                     {deal.descriptionEn}
                   </p>
                 }
                 ko={
-                  <p className="text-base text-white/95 sm:text-lg md:text-[1.125rem]">{deal.descriptionKo}</p>
+                  <p className="whitespace-pre-line text-base text-white/95 sm:text-lg md:text-[1.125rem]">
+                    {deal.descriptionKo}
+                  </p>
                 }
                 koClassName="mt-3"
               />

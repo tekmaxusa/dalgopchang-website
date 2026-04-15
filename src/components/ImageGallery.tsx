@@ -12,19 +12,11 @@ interface GalleryImage {
 const images: GalleryImage[] = [
   {
     src: "/photos/kbbq-6.png",
-    alt: "Korean BBQ — Prime rib-eye",
+    alt: "Korean BBQ — premium cuts on the grill",
   },
   {
-    src: "/photos/chef-4.png",
-    alt: "Chef Special — Small intestine stew",
-  },
-  {
-    src: "/photos/entree-bulgogi.png",
-    alt: "Entree — Bulgogi",
-  },
-  {
-    src: "/photos/entree-soy-crab.png",
-    alt: "Chef Special — Soy sauce marinated raw crab",
+    src: "/photos/kbbq-3.png",
+    alt: "소곱창 구이 — grilled small intestine (gopchang)",
   },
 ];
 
@@ -45,19 +37,17 @@ export default function ImageGallery() {
           </p>
         </div>
 
-        {/* Single-row horizontal carousel: less vertical scroll; swipe on touch */}
         <div
           className={cn(
-            "-mx-1 flex gap-3 overflow-x-auto px-1 pb-2",
-            "scroll-pl-3 scroll-pr-3 snap-x snap-mandatory",
-            "[-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            "sm:gap-4 md:scroll-pl-4 md:scroll-pr-4"
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5",
+            "max-w-5xl mx-auto"
           )}
           role="region"
-          aria-label="Photo gallery, swipe horizontally"
+          aria-label="Featured BBQ and gopchang photos"
         >
           {images.map((image, index) => (
-            <Dialog key={index}>
+            <div key={index} className="min-w-0">
+            <Dialog>
               <DialogTrigger
                 render={
                   <motion.div
@@ -66,7 +56,7 @@ export default function ImageGallery() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
                     className={cn(
-                      "group relative aspect-[4/3] w-[min(82vw,18.5rem)] shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl border border-white/10 sm:w-64 md:w-72"
+                      "group relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10"
                     )}
                   >
                     <img
@@ -101,6 +91,7 @@ export default function ImageGallery() {
                 </div>
               </DialogContent>
             </Dialog>
+            </div>
           ))}
         </div>
       </div>

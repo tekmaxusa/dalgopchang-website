@@ -2,7 +2,14 @@ export type MenuItem = {
   ko: string;
   en: string;
   description?: string;
+  /** Korean line(s) for the dish detail (e.g. combo inclusions). Shown above English `description` when set. */
+  descriptionKo?: string;
+  /** Single price (used when lunch/dinner are not both set). */
   price?: string;
+  /** Lunch price (e.g. entrées with lunch menu). */
+  priceLunch?: string;
+  /** Dinner / regular price when lunch pricing applies. */
+  priceDinner?: string;
   imageSrc?: string;
 };
 
@@ -21,10 +28,23 @@ export function getMenuDescription(item: MenuItem): string | null {
   return d;
 }
 
+/** Lunch + dinner columns for entrée cards (single-price items show "—" for lunch). */
+export function getEntreePriceCells(item: MenuItem): { lunch: string; dinner: string } {
+  if (item.priceLunch?.trim() && item.priceDinner?.trim()) {
+    return { lunch: item.priceLunch.trim(), dinner: item.priceDinner.trim() };
+  }
+  return { lunch: "—", dinner: displayMenuPrice(item) };
+}
+
 export type MenuItemSection = {
   id: string;
   title: string;
   items: MenuItem[];
+  /** Shown under the section title (e.g. entrée lunch window). Split for mobile line break. */
+  lunchMenuHoursEn1?: string;
+  lunchMenuHoursEn2?: string;
+  lunchMenuHoursKo1?: string;
+  lunchMenuHoursKo2?: string;
 };
 
 export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
@@ -35,20 +55,23 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
       {
         ko: "달라스 콤보",
         en: "Dallas Combo",
+        descriptionKo: "곱창 / 대창 / 막창 / 특양",
         description: "Small & large intestine of cow / Abomasum / Tripe.",
         imageSrc: "/photos/kbbq-3.png",
-        price: "$89.99",
+        price: "$64.99",
       },
       {
         ko: "텍사스 콤보",
         en: "Texas Combo",
+        descriptionKo: "곱창 / 대창 / 막창 / 특양",
         description: "Small & large intestine of cow / Abomasum / Tripe.",
         imageSrc: "/photos/kbbq-2.png",
-        price: "$89.99",
+        price: "$79.99",
       },
       {
         ko: "카우보이 콤보",
         en: "Cowboy Combo",
+        descriptionKo: "특 등심 / 특 차돌박이 / 황제 늑간살 / 갈비살",
         description: "Prime ribeye / Prime brisket / Prime rib finger / Prime rib.",
         imageSrc: "/photos/kbbq-6.png",
         price: "$129.99",
@@ -56,6 +79,7 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
       {
         ko: "소고기 콤보",
         en: "Beef Combo",
+        descriptionKo: "특 등심 / 차돌박이 / 늑간살",
         description: "Prime ribeye / Brisket / Rib finger.",
         imageSrc: "/photos/kbbq-10.png",
         price: "$79.99",
@@ -63,9 +87,10 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
       {
         ko: "돼지 콤보",
         en: "Pork Combo",
+        descriptionKo: "삼겹살 / 항정살 / 돼지 목살",
         description: "Pork belly / Pork jowl / Pork Collar.",
         imageSrc: "/photos/kbbq-7.png",
-        price: "$69.99",
+        price: "$64.99",
       },
     ],
   },
@@ -120,36 +145,56 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
   {
     id: "entree",
     title: "Entree",
+    lunchMenuHoursEn1: "Lunch menu available",
+    lunchMenuHoursEn2: "Mon–Sat · until ~3:30 PM",
+    lunchMenuHoursKo1: "런치 메뉴",
+    lunchMenuHoursKo2: "월–토 · 오후 3:30경까지",
     items: [
       {
         ko: "부산 돼지 국밥",
         en: "Busan pork stew",
         description: "N/A.",
         imageSrc: "/photos/entree-busan-pork-stew.png",
-        price: "$14.99",
+        priceLunch: "$9.99",
+        priceDinner: "$14.99",
       },
       {
         ko: "얼큰 돼지 국밥",
         en: "Spicy pork stew",
         description: "N/A.",
         imageSrc: "/photos/entree-spicy-pork-stew.png",
-        price: "$14.99",
+        priceLunch: "$9.99",
+        priceDinner: "$14.99",
       },
-      { ko: "섞어탕", en: "Mixed stew", description: "N/A.", price: "$15.99" },
-      { ko: "얼큰 섞어탕", en: "Spicy mixed stew", description: "N/A.", price: "$15.99" },
+      {
+        ko: "섞어탕",
+        en: "Mixed stew",
+        description: "N/A.",
+        priceLunch: "$9.99",
+        priceDinner: "$14.99",
+      },
+      {
+        ko: "얼큰 섞어탕",
+        en: "Spicy mixed stew",
+        description: "N/A.",
+        priceLunch: "$9.99",
+        priceDinner: "$14.99",
+      },
       {
         ko: "간장게장 백반",
         en: "Soy sauce marinated raw crab",
         description: "N/A.",
         imageSrc: "/photos/entree-soy-crab.png",
-        price: "$18.99",
+        priceLunch: "$17.99",
+        priceDinner: "$21.99",
       },
       {
         ko: "양념게장 백반",
         en: "Spicy sauce marinated raw crab",
         description: "N/A.",
         imageSrc: "/photos/entree-spicy-crab.png",
-        price: "$18.99",
+        priceLunch: "$15.99",
+        priceDinner: "$19.99",
       },
       {
         ko: "소불고기",
@@ -230,27 +275,8 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
   {
     id: "drink",
     title: "Drink",
-    items: [
-      { ko: "참이슬 후레쉬, 오리지널", en: "Chamisul Fresh, Original", description: "Soju.", imageSrc: "/photos/drink-soju.png", price: "$10.99" },
-      { ko: "진로이즈백", en: "Jinro is back", description: "Soju.", price: "$10.99" },
-      { ko: "한라산 17도 / 한라산 21도", en: "Hallasan from Jeju Island (17% ABV / 21% ABV)", description: "Soju.", price: "$11.99" },
-      { ko: "처음처럼", en: "Chum churum", description: "Soju.", price: "$10.99" },
-      { ko: "새로", en: "Saero", description: "Soju.", price: "$10.99" },
-      {
-        ko: "N/A",
-        en: "Flavored Soju",
-        description:
-          "Grapefruit, Green grape, Lychee, Peach, Pineapple, Plum, Pomegranate, Mango, Lemon, Strawberry, Apple mango, Yogurt, Orange.",
-        price: "$11.99",
-      },
-      { ko: "하이볼", en: "Highball", description: "Peach, Grapefruit.", imageSrc: "/photos/drink-highball.png", price: "$11.99" },
-      { ko: "막걸리", en: "Makgeolli", description: "Wine.", imageSrc: "/photos/drink-makgeolli.png", price: "$12.99" },
-      { ko: "복분자", en: "Bokbunja", description: "Wine.", price: "$13.99" },
-      { ko: "백세주", en: "Baekseju", description: "Wine.", price: "$12.99" },
-      { ko: "맥주", en: "Domestic Beer", description: "Coors Light, Shiner Bock, Miller Lite.", imageSrc: "/photos/drink-beer.png", price: "$6.99" },
-      { ko: "맥주", en: "Imported Beer", description: "Heineken, Corona, Tsingtao, Asahi, Sapporo, Kirin Ichiban, Terra.", price: "$7.99" },
-      { ko: "음료", en: "Soda", description: "Soda, Milkis, Hongcho.", imageSrc: "/photos/drink-soda.png", price: "$3.99" },
-    ],
+    /** Card grid not used — see `DrinkMenuCompact` + `drinkMenu.ts`. */
+    items: [],
   },
 ];
 

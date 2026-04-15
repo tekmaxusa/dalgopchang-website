@@ -81,10 +81,10 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
           <Sheet>
             <SheetTrigger
               render={
-                <Button variant="ghost" size="icon" className="h-14 w-14 shrink-0 text-foreground [&_svg]:!size-10" aria-label="Open menu" />
+                <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0 text-foreground [&_svg]:!size-6" aria-label="Open menu" />
               }
             >
-              <Menu className="!h-10 !w-10" strokeWidth={2.5} aria-hidden />
+              <Menu className="!h-6 !w-6" strokeWidth={2.25} aria-hidden />
             </SheetTrigger>
             <SheetContent side="right" className="bg-background border-border p-0">
               <div className="flex flex-col h-full p-8">

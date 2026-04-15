@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Calendar, User, ArrowLeft } from "lucide-react";
+import { User, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/data/blogPosts";
 import { withBaseUrl } from "@/lib/asset";
@@ -53,10 +53,6 @@ export default function BlogPost({ slug, onBack }: BlogPostProps) {
           </div>
 
           <div className="flex items-center gap-4 text-xs text-white mb-6 uppercase tracking-widest font-bold">
-            <span className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              {post.date}
-            </span>
             <span className="flex items-center gap-1">
               <User className="w-4 h-4" />
               {post.author}

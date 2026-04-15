@@ -1,105 +1,143 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MENU_SECTIONS } from "@/data/menuImages";
 import {
   MENU_ITEM_SECTIONS,
   type MenuItem,
+  type MenuItemSection,
   displayMenuPrice,
+  getEntreePriceCells,
   getMenuDescription,
 } from "@/data/menuItems";
-import { FileText, Maximize2 } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { FileText } from "lucide-react";
 import { withBaseUrl } from "@/lib/asset";
+import DrinkMenuCompact from "@/components/DrinkMenuCompact";
 
 const categories = [{ id: "all", label: "All" }, ...MENU_SECTIONS.map((s) => ({ id: s.id, label: s.title }))];
 
-function MenuItemCards({ items }: { items: MenuItem[] }) {
+const ENTREE_PLACEHOLDER_IMAGE = "/photos/interior.png";
+
+function MenuItemCards({ items, entree }: { items: MenuItem[]; entree?: boolean }) {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items.map((item, idx) => {
         const desc = getMenuDescription(item);
         const price = displayMenuPrice(item);
-        const src = item.imageSrc!;
+        const hasEntreeLunchDinner =
+          !!entree && !!(item.priceLunch?.trim() && item.priceDinner?.trim());
+        const cells = hasEntreeLunchDinner ? getEntreePriceCells(item) : null;
+        const src = entree ? item.imageSrc ?? ENTREE_PLACEHOLDER_IMAGE : item.imageSrc!;
 
         return (
-          <Dialog key={`${item.ko}|${item.en}|${idx}`}>
-            <DialogTrigger
-              render={
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.03 }}
-                  viewport={{ once: true }}
-                  className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/50 text-left shadow-[0_18px_55px_-35px_rgba(0,0,0,0.95)]"
-                >
-                  <div className="relative h-[150px] w-full shrink-0 overflow-hidden bg-black/40 sm:h-[170px] md:h-[180px]">
-                    <img
-                      src={withBaseUrl(src)}
-                      alt={`${item.ko} — ${item.en}`}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80" />
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
-                      <span className="rounded-full border border-white/20 bg-black/50 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
-                        Tap to enlarge
-                      </span>
-                      <Maximize2 className="h-4 w-4 shrink-0 text-white/90" aria-hidden />
-                    </div>
-                  </div>
+          <motion.div
+            key={`${item.ko}|${item.en}|${idx}`}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.03 }}
+            viewport={{ once: true }}
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/50 text-left shadow-[0_18px_55px_-35px_rgba(0,0,0,0.95)]"
+          >
+            <div className="relative h-[150px] w-full shrink-0 overflow-hidden bg-black/40 sm:h-[170px] md:h-[180px]">
+              <img
+                src={withBaseUrl(src)}
+                alt={`${item.ko} — ${item.en}`}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-90" />
+            </div>
 
-                  <div className="flex flex-1 flex-col gap-2 border-t border-white/10 p-4 sm:p-5">
-                    <div className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">{item.ko}</div>
-                    <div className="text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl">{item.en}</div>
-                    {desc && (
-                      <p className="line-clamp-3 text-base leading-relaxed text-white/90 sm:text-[17px]">{desc}</p>
-                    )}
-                    <div className="mt-auto pt-2 text-lg font-extrabold tabular-nums text-primary sm:text-xl">{price}</div>
-                  </div>
-                </motion.div>
-              }
-            />
-
-            <DialogContent
-              showCloseButton={true}
-              overlayClassName="bg-black/85 supports-backdrop-filter:backdrop-blur-md"
-              className={cn(
-                "!fixed !inset-0 !top-0 !left-0 !right-0 !bottom-0 !z-50",
-                "!translate-x-0 !translate-y-0 !h-screen !w-screen !max-w-none !rounded-none !p-0 !ring-0",
-                "border-none bg-black/98",
-                "flex items-center justify-center"
+            <div className="flex flex-1 flex-col gap-2 border-t border-white/10 p-4 sm:p-5">
+              <div className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl">{item.ko}</div>
+              <div className="text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl">{item.en}</div>
+              {(item.descriptionKo || desc) && (
+                <div className="space-y-1.5">
+                  {item.descriptionKo && (
+                    <p className="text-base leading-relaxed text-white sm:text-[17px]">{item.descriptionKo}</p>
+                  )}
+                  {desc && (
+                    <p className="line-clamp-4 text-base leading-relaxed text-white/85 sm:text-[17px]">{desc}</p>
+                  )}
+                </div>
               )}
-            >
-              <div className="relative flex h-screen w-screen items-center justify-center">
-                <img
-                  src={withBaseUrl(src)}
-                  alt={`${item.ko} — ${item.en}`}
-                  decoding="async"
-                  className="max-h-screen max-w-full object-contain"
-                />
-              </div>
-            </DialogContent>
-          </Dialog>
+              {entree && cells ? (
+                <div className="mt-auto grid grid-cols-2 gap-3 border-t border-white/10 pt-3 sm:pt-4">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-primary sm:text-sm md:text-base">
+                      Lunch
+                    </div>
+                    <div className="text-lg font-extrabold tabular-nums text-primary sm:text-xl">{cells.lunch}</div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-primary sm:text-sm md:text-base">
+                      Dinner
+                    </div>
+                    <div className="text-lg font-extrabold tabular-nums text-primary sm:text-xl">{cells.dinner}</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-auto pt-2 text-lg font-extrabold tabular-nums text-primary sm:text-xl">{price}</div>
+              )}
+            </div>
+          </motion.div>
         );
       })}
     </div>
   );
 }
 
-function MenuSectionCards({ title, items }: { title: string; items: MenuItem[] }) {
-  const cardItems = items.filter((i) => i.imageSrc);
+function MenuSectionCards({ section }: { section: MenuItemSection }) {
+  const isEntreeSection = section.id === "entree";
+  const isDrinkSection = section.id === "drink";
+
+  if (isDrinkSection) {
+    return (
+      <section className="px-4 sm:px-6">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-4 border-b border-white/10 pb-3 text-left text-2xl font-display font-extrabold uppercase tracking-[0.12em] text-white md:text-3xl">
+            {section.title}
+          </h2>
+          <DrinkMenuCompact />
+        </div>
+      </section>
+    );
+  }
+
+  const cardItems = isEntreeSection ? section.items : section.items.filter((i) => i.imageSrc);
   if (cardItems.length === 0) return null;
 
   return (
     <section className="px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-6 border-b border-white/10 pb-3 text-left text-2xl font-display font-extrabold uppercase tracking-[0.12em] text-white md:text-3xl">
-          {title}
+        <h2 className="mb-4 border-b border-white/10 pb-3 text-left text-2xl font-display font-extrabold uppercase tracking-[0.12em] text-white md:text-3xl">
+          {section.title}
         </h2>
-        <MenuItemCards items={cardItems} />
+        {isEntreeSection && section.lunchMenuHoursEn1 && section.lunchMenuHoursEn2 && (
+          <div className="mb-6 rounded-xl border border-primary/35 bg-primary/[0.08] px-4 py-3 text-sm leading-relaxed text-white/95 sm:text-base">
+            <p className="font-bold uppercase tracking-wide text-primary">
+              <span className="block sm:inline">{section.lunchMenuHoursEn1}</span>
+              <span className="hidden sm:inline" aria-hidden>
+                {" "}
+                ·{" "}
+              </span>
+              <span className="mt-1 block sm:mt-0 sm:inline">{section.lunchMenuHoursEn2}</span>
+            </p>
+            {section.lunchMenuHoursKo1 && section.lunchMenuHoursKo2 && (
+              <p className="mt-1.5 text-white/85">
+                <span className="block sm:inline">{section.lunchMenuHoursKo1}</span>
+                <span className="hidden sm:inline" aria-hidden>
+                  {" "}
+                  ·{" "}
+                </span>
+                <span className="mt-1 block sm:mt-0 sm:inline">{section.lunchMenuHoursKo2}</span>
+              </p>
+            )}
+          </div>
+        )}
+        <MenuItemCards items={cardItems} entree={isEntreeSection} />
       </div>
     </section>
   );
@@ -107,8 +145,18 @@ function MenuSectionCards({ title, items }: { title: string; items: MenuItem[] }
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const menuItemsAnchorRef = useRef<HTMLDivElement>(null);
+  const categoryScrollSkipRef = useRef(true);
 
   const itemsById = Object.fromEntries(MENU_ITEM_SECTIONS.map((s) => [s.id, s]));
+
+  useEffect(() => {
+    if (categoryScrollSkipRef.current) {
+      categoryScrollSkipRef.current = false;
+      return;
+    }
+    menuItemsAnchorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [activeCategory]);
 
   return (
     <main className="relative pb-24 pt-[var(--header-height)]">
@@ -142,16 +190,17 @@ export default function Menu() {
 
       <div
         className={cn(
-          "sticky z-40 border-b border-white/10 bg-black/95 py-2.5 backdrop-blur-md sm:py-3",
+          "sticky z-40 border-b border-white/10 bg-black/95 pt-2.5 pb-5 backdrop-blur-md sm:pt-3 sm:pb-6",
           "top-[var(--header-height)]",
           "shadow-[0_8px_32px_-10px_rgba(0,0,0,0.9)]"
         )}
       >
-        <div className="mx-auto max-w-7xl px-3 sm:px-6">
+        <div className="mx-auto max-w-7xl px-0 sm:px-6">
           <div
             className={cn(
-              "flex flex-wrap items-center justify-center gap-2 gap-y-2.5 sm:gap-3",
-              "pb-0.5"
+              "flex flex-nowrap items-stretch justify-start gap-2 overflow-x-auto px-3 pb-0.5 sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0",
+              "scroll-pl-3 scroll-pr-3 [-webkit-overflow-scrolling:touch]",
+              "[scrollbar-width:thin] [scrollbar-color:rgba(225,29,72,0.35)_transparent] sm:[scrollbar-width:none]"
             )}
           >
             {categories.map((cat) => (
@@ -160,7 +209,7 @@ export default function Menu() {
                 variant={activeCategory === cat.id ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat.id)}
                 className={cn(
-                  "shrink-0 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300",
+                  "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300",
                   "sm:px-6 sm:py-2.5 sm:text-sm sm:tracking-widest",
                   activeCategory === cat.id
                     ? "bg-primary text-white shadow-lg shadow-primary/20 sm:scale-105"
@@ -174,12 +223,18 @@ export default function Menu() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl space-y-14 sm:space-y-16">
+      <div
+        ref={menuItemsAnchorRef}
+        className="mx-auto mt-10 max-w-7xl space-y-14 scroll-mt-[calc(var(--header-height)+5.5rem)] sm:space-y-16"
+      >
         {MENU_SECTIONS.filter((s) => activeCategory === "all" || activeCategory === s.id).map((section) => {
           const itemSection = itemsById[section.id];
-          if (!itemSection?.items?.length) return null;
+          if (!itemSection) return null;
+          if (!itemSection.items?.length && section.id !== "drink") return null;
           return (
-            <MenuSectionCards key={section.id} title={section.title} items={itemSection.items} />
+            <Fragment key={section.id}>
+              <MenuSectionCards section={itemSection} />
+            </Fragment>
           );
         })}
       </div>

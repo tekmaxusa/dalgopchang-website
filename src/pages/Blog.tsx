@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { User, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { blogPosts } from "@/data/blogPosts";
 import BilingualText from "../components/BilingualText";
@@ -52,10 +52,6 @@ export default function Blog({ onPostClick }: BlogProps) {
                 </div>
                 <CardContent className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-4 text-xs text-white mb-4 uppercase tracking-widest font-bold">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {post.date}
-                    </span>
                     <span className="flex items-center gap-1">
                       <User className="w-3 h-3" />
                       {post.author}

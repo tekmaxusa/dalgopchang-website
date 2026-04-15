@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { GOOGLE_MAPS_PLACE_URL } from "@/lib/maps";
 
@@ -48,6 +48,26 @@ export default function Footer({ onPageChange }: FooterProps) {
                 </li>
               ))}
             </ul>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.facebook.com/p/Dalgopchang-100070045609590/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] text-white transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-primary"
+                aria-label="Dalgopchang on Facebook"
+              >
+                <Facebook className="h-5 w-5" aria-hidden />
+              </a>
+              <a
+                href="https://www.instagram.com/dalgopchang"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] text-white transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-primary"
+                aria-label="Dalgopchang on Instagram"
+              >
+                <Instagram className="h-5 w-5" aria-hidden />
+              </a>
+            </div>
           </div>
 
           {/* Contact + hours */}
