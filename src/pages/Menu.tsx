@@ -200,7 +200,8 @@ export default function Menu() {
             className={cn(
               "flex flex-nowrap items-stretch justify-start gap-2 overflow-x-auto px-3 pb-0.5 sm:flex-wrap sm:justify-center sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0",
               "scroll-pl-3 scroll-pr-3 [-webkit-overflow-scrolling:touch]",
-              "[scrollbar-width:thin] [scrollbar-color:rgba(225,29,72,0.35)_transparent] sm:[scrollbar-width:none]"
+              /* Hide horizontal scrollbar (no red track) while keeping swipe scroll */
+              "[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             )}
           >
             {categories.map((cat) => (
