@@ -33,7 +33,7 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-extrabold mb-4 sm:mb-5 tracking-tighter leading-none">
+          <h1 className="text-5xl sm:text-7xl md:text-6xl lg:text-7xl font-display font-extrabold mb-4 sm:mb-5 tracking-tighter leading-none">
             <span className="text-white">DALGOPCHANG</span>{" "}
             <span className="text-primary block md:inline">달곱창</span>
           </h1>
@@ -42,15 +42,15 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
             Experience the sizzle and soul of authentic Korean BBQ.
           </p>
           
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
             <Button 
               size="default" 
-              className="w-full sm:w-auto !h-auto min-h-0 bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-2.5 sm:px-7 sm:py-2.5 text-sm font-bold"
+              className="w-full sm:w-auto !h-auto min-h-0 bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-2.5 sm:px-7 sm:py-2.5 md:px-9 md:py-3 lg:px-11 lg:py-3.5 text-sm md:text-base lg:text-lg font-bold"
               onClick={onViewMenu}
             >
               <BilingualText
                 en={<span>View Menu</span>}
-                ko={<span className="text-sm font-semibold tracking-wide">메뉴 보기</span>}
+                ko={<span className="text-sm font-semibold tracking-wide md:text-sm lg:text-base">메뉴 보기</span>}
                 koTone="normal"
                 className="leading-none"
                 koClassName="mt-0.5"
@@ -59,12 +59,12 @@ export default function Hero({ onViewMenu, onFindLocation }: HeroProps) {
             <Button 
               size="default" 
               variant="outline" 
-              className="w-full sm:w-auto !h-auto min-h-0 rounded-full px-6 py-2.5 sm:px-7 sm:py-2.5 text-sm font-bold border-2 !border-primary bg-transparent text-white shadow-[0_0_24px_-4px_rgba(225,29,72,0.45)] hover:bg-primary/15 hover:!border-primary hover:text-white"
+              className="w-full sm:w-auto !h-auto min-h-0 rounded-full px-6 py-2.5 sm:px-7 sm:py-2.5 md:px-9 md:py-3 lg:px-11 lg:py-3.5 text-sm md:text-base lg:text-lg font-bold border-2 !border-primary bg-transparent text-white shadow-[0_0_24px_-4px_rgba(225,29,72,0.45)] hover:bg-primary/15 hover:!border-primary hover:text-white"
               onClick={onFindLocation}
             >
               <BilingualText
                 en={<span className="text-white">Find Location</span>}
-                ko={<span className="text-sm font-semibold tracking-wide text-white">위치 찾기</span>}
+                ko={<span className="text-sm font-semibold tracking-wide text-white md:text-sm lg:text-base">위치 찾기</span>}
                 koTone="normal"
                 className="leading-none text-white"
                 koClassName="mt-0.5"

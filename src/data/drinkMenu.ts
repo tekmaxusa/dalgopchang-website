@@ -30,3 +30,12 @@ export const PRICES = {
   milkis: "$3.50",
   hongcho: "$4.99",
 } as const;
+
+/** Hero images for each drink section (see `public/photos/drink-*.png`). */
+export const DRINK_SECTION_IMAGES = {
+  soju: { src: "/photos/drink-soju.png", alt: "Korean soju" },
+  highball: { src: "/photos/drink-highball.png", alt: "Highball drinks" },
+  wine: { src: "/photos/drink-makgeolli.png", alt: "Korean wine and makgeolli" },
+  beer: { src: "/photos/drink-beer.png", alt: "Beer" },
+  soda: { src: "/photos/drink-soda.png", alt: "Soft drinks" },
+} as const;

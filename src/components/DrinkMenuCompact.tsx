@@ -1,5 +1,40 @@
 import { motion } from "motion/react";
-import { PRICES, SOJU_FLAVORS, SOJU_STANDARD, type DrinkRow } from "@/data/drinkMenu";
+import {
+  DRINK_SECTION_IMAGES,
+  PRICES,
+  SOJU_FLAVORS,
+  SOJU_STANDARD,
+  type DrinkRow,
+} from "@/data/drinkMenu";
+import { withBaseUrl } from "@/lib/asset";
+import { cn } from "@/lib/utils";
+
+function DrinkSectionImage({
+  imageKey,
+  className,
+}: {
+  imageKey: keyof typeof DRINK_SECTION_IMAGES;
+  className?: string;
+}) {
+  const { src, alt } = DRINK_SECTION_IMAGES[imageKey];
+  return (
+    <div
+      className={cn(
+        "relative w-full shrink-0 overflow-hidden rounded-xl border border-white/10 bg-black/40",
+        className
+      )}
+    >
+      <img
+        src={withBaseUrl(src)}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+    </div>
+  );
+}
 
 function Row({ row }: { row: DrinkRow }) {
   return (
@@ -20,6 +55,7 @@ export default function DrinkMenuCompact() {
     >
       {/* Soju */}
       <section className="border-b border-white/10 p-4 sm:p-5">
+        <DrinkSectionImage imageKey="soju" className="mb-4 h-40 w-full sm:h-48" />
         <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
           <div>
             <h3 className="font-display text-xl font-extrabold uppercase tracking-[0.15em] text-primary sm:text-2xl">Soju</h3>
@@ -51,6 +87,7 @@ export default function DrinkMenuCompact() {
       {/* Highball + Wine — side by side on md */}
       <div className="grid border-b border-white/10 md:grid-cols-2">
         <section className="border-b border-white/10 p-4 sm:p-5 md:border-b-0 md:border-r md:border-white/10">
+          <DrinkSectionImage imageKey="highball" className="mb-3 h-32 w-full sm:h-36" />
           <div className="mb-2 flex items-end justify-between gap-2">
             <div>
               <h3 className="font-display text-xl font-extrabold uppercase tracking-[0.15em] text-primary sm:text-2xl">Highball</h3>
@@ -61,6 +98,7 @@ export default function DrinkMenuCompact() {
           <p className="text-base text-white/85">Peach, Grapefruit</p>
         </section>
         <section className="p-4 sm:p-5">
+          <DrinkSectionImage imageKey="wine" className="mb-3 h-32 w-full sm:h-36" />
           <div className="mb-2 flex items-end justify-between gap-2">
             <div>
               <h3 className="font-display text-xl font-extrabold uppercase tracking-[0.15em] text-primary sm:text-2xl">Wine</h3>
@@ -84,6 +122,7 @@ export default function DrinkMenuCompact() {
 
       {/* Beer */}
       <section className="border-b border-white/10 p-4 sm:p-5">
+        <DrinkSectionImage imageKey="beer" className="mb-4 h-36 w-full sm:h-44" />
         <div className="mb-3">
           <h3 className="font-display text-xl font-extrabold uppercase tracking-[0.15em] text-primary sm:text-2xl">Beer</h3>
           <p className="text-base font-semibold text-white/80">맥주</p>
@@ -122,6 +161,7 @@ export default function DrinkMenuCompact() {
 
       {/* Soda */}
       <section className="p-4 sm:p-5">
+        <DrinkSectionImage imageKey="soda" className="mb-4 h-32 w-full sm:h-36" />
         <div className="mb-3 flex items-end justify-between gap-2">
           <div>
             <h3 className="font-display text-xl font-extrabold uppercase tracking-[0.15em] text-primary sm:text-2xl">Soda</h3>
