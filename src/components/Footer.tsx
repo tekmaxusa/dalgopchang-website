@@ -142,7 +142,15 @@ export default function Footer({ onPageChange }: FooterProps) {
             © {year} Dalgopchang 달곱창. All rights reserved.
           </p>
           <p className="text-sm text-white/50 sm:text-base">
-            Design by <span className="font-semibold text-primary/90">TexMax LLC</span>
+            Design by{" "}
+            <a
+              href="https://tekmaxllc.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary/90 underline-offset-4 transition-colors hover:text-primary hover:underline"
+            >
+              TekMax LLC
+            </a>
           </p>
         </div>
       </div>
