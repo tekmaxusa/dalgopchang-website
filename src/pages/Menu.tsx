@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MENU_SECTIONS } from "@/data/menuImages";
 import {
@@ -174,16 +174,20 @@ export default function Menu() {
             Explore our curated selection of premium Korean Gopchang and BBQ.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-white/20 bg-transparent px-6 py-5 text-white hover:bg-white/10 hover:text-white"
+            <a
+              href={withBaseUrl("/DalgopchangMenu.pdf")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "rounded-full border-white/20 bg-transparent px-6 py-5 text-white hover:bg-white/10 hover:text-white"
+              )}
             >
-              <a href={withBaseUrl("/DalgopchangMenu.pdf")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-2">
                 <FileText className="h-4 w-4 text-primary" aria-hidden />
                 <span className="font-bold uppercase tracking-wider">View PDF menu</span>
-              </a>
-            </Button>
+              </span>
+            </a>
           </div>
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import { GOOGLE_MAPS_PLACE_URL } from "@/lib/maps";
+import { trackClickToCall, trackOutboundMapClick } from "@/lib/analytics";
 
 interface NavItem {
   label: string;
@@ -113,20 +114,22 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
                 </nav>
                 <div className="mt-auto flex flex-col gap-4">
                   <a
-                    href="tel:+14699955552"
+                    href="tel:+14692896862"
                     className="flex items-start gap-3 text-white hover:text-primary transition-colors"
+                    onClick={() => trackClickToCall("mobile_menu")}
                   >
                     <Phone className="w-5 h-5 shrink-0 mt-0.5" />
-                    <span className="text-sm font-semibold leading-snug">+1 469-995-5552</span>
+                    <span className="text-sm font-semibold leading-snug">469-289-6862</span>
                   </a>
                   <a
                     href={GOOGLE_MAPS_PLACE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-3 text-white hover:text-primary transition-colors"
+                    onClick={() => trackOutboundMapClick("mobile_menu")}
                   >
                     <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-primary" />
-                    <span className="text-sm leading-relaxed">
+                    <span className="text-sm leading-relaxed break-words">
                       1060 W Frankford Rd Ste 115, Carrollton, TX 75007
                     </span>
                   </a>

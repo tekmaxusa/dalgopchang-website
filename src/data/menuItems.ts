@@ -109,8 +109,8 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
       { ko: "소막창 구이", en: "Abomasum", description: "N/A.", imageSrc: "/photos/kbbq-5.png", price: "$31.99" },
       { ko: "껍데기 삼겹살", en: "Pork belly", description: "N/A.", imageSrc: "/photos/kbbq-7.png", price: "$27.99" },
       { ko: "돼지 갈비", en: "Pork rib", description: "N/A.", imageSrc: "/photos/kbbq-8.png", price: "$28.99" },
-      { ko: "항정살", en: "Pork jowl", description: "N/A.", imageSrc: "/photos/kbbq-hanjeongsal.png", price: "$29.99" },
-      { ko: "돼지 목살", en: "Pork Collar", description: "N/A.", imageSrc: "/photos/kbbq-mok-sal.png", price: "$26.99" },
+      { ko: "항정살", en: "Pork jowl", description: "N/A.", imageSrc: "/photos/kbbq-5.png", price: "$29.99" },
+      { ko: "돼지 목살", en: "Pork Collar", description: "N/A.", imageSrc: "/photos/kbbq-8.png", price: "$26.99" },
     ],
   },
   {
@@ -132,7 +132,6 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
     title: "Side Dish to Add",
     items: [
       { ko: "라면사리", en: "Extra ramen noodles", description: "N/A.", imageSrc: "/photos/side-ramen.png", price: "$4.99" },
-      { ko: "당면사리", en: "Extra glass noodles", description: "N/A.", imageSrc: "/photos/side-glass-noodles.png", price: "$4.99" },
       { ko: "우동사리", en: "Extra udon noodles", description: "N/A.", imageSrc: "/photos/side-udon.png", price: "$4.99" },
       { ko: "떡사리", en: "Extra rice cake", description: "N/A.", imageSrc: "/photos/side-rice-cake.png", price: "$4.99" },
       { ko: "국수사리", en: "Extra noodles", description: "N/A.", imageSrc: "/photos/side-wheat-noodles.png", price: "$4.99" },
@@ -200,10 +199,10 @@ export const MENU_ITEM_SECTIONS: MenuItemSection[] = [
       },
       {
         ko: "소불고기",
-        en: "Soy sauce marinated beef",
+        en: "Beef Bulgogi",
         description: "N/A.",
         imageSrc: "/photos/entree-bulgogi.png",
-        price: "$17.99",
+        price: "$22.99",
       },
       {
         ko: "돼지불고기",

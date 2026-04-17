@@ -50,14 +50,15 @@ export default function ImageGallery() {
             <Dialog>
               <DialogTrigger
                 render={
-                  <motion.div
+                  <motion.button
                     initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
                     className={cn(
-                      "group relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10"
+                      "group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 text-left"
                     )}
+                    type="button"
                   >
                     <img
                       src={withBaseUrl(image.src)}
@@ -73,7 +74,7 @@ export default function ImageGallery() {
                         <span className="text-xs font-bold uppercase tracking-widest text-white">Zoom</span>
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.button>
                 }
               />
 

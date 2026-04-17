@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Maximize2, X } from "lucide-react";
+import { withBaseUrl } from "@/lib/asset";
 
 export interface MenuImage {
   src: string;
@@ -27,17 +28,18 @@ export default function MenuImageSection({ title, images }: MenuImageSectionProp
           {images.map((image, index) => (
             <div key={index}>
               <Dialog>
-                <DialogTrigger render={
-                  <motion.div
+                <DialogTrigger
+                  render={
+                    <motion.button
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.05 }}
                     viewport={{ once: true }}
-                    className="relative aspect-[3/4] overflow-hidden rounded-xl bg-muted group cursor-pointer border border-white/5"
-                  />
-                }>
+                    className="relative aspect-[3/4] overflow-hidden rounded-xl bg-muted group border border-white/5 text-left"
+                    type="button"
+                  >
                   <img
-                    src={image.src}
+                    src={withBaseUrl(image.src)}
                     alt={image.alt}
                     loading="lazy"
                     decoding="async"
@@ -49,11 +51,13 @@ export default function MenuImageSection({ title, images }: MenuImageSectionProp
                       Enlarge Menu
                     </span>
                   </div>
-                </DialogTrigger>
+                  </motion.button>
+                  }
+                />
                 <DialogContent className="max-w-4xl bg-black/95 border-none p-0 overflow-hidden flex items-center justify-center">
                   <div className="relative w-full h-full max-h-[90vh] flex items-center justify-center p-4">
                     <img
-                      src={image.src}
+                      src={withBaseUrl(image.src)}
                       alt={image.alt}
                       decoding="async"
                       className="max-w-full max-h-full object-contain rounded-lg"

@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { GOOGLE_MAPS_PLACE_URL } from "@/lib/maps";
+import { trackClickToCall, trackContactClick, trackOutboundMapClick } from "@/lib/analytics";
 
 interface FooterProps {
   onPageChange: (page: string) => void;
@@ -83,6 +84,7 @@ export default function Footer({ onPageChange }: FooterProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-colors hover:text-white"
+                      onClick={() => trackOutboundMapClick("footer")}
                     >
                       1060 W Frankford Rd Ste 115, Carrollton, TX 75007
                     </a>
@@ -90,8 +92,12 @@ export default function Footer({ onPageChange }: FooterProps) {
                 </div>
                 <div className="flex gap-3">
                   <Phone className="w-5 h-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                  <a className="font-semibold hover:text-white transition-colors" href="tel:+14699955552">
-                    +1 469-995-5552
+                  <a
+                    className="font-semibold hover:text-white transition-colors"
+                    href="tel:+14692896862"
+                    onClick={() => trackClickToCall("footer")}
+                  >
+                    469-289-6862
                   </a>
                 </div>
                 <div className="flex gap-3">
@@ -99,6 +105,7 @@ export default function Footer({ onPageChange }: FooterProps) {
                   <a
                     className="break-all hover:text-white transition-colors"
                     href="mailto:order@dalgopchang.com"
+                    onClick={() => trackContactClick("email", "footer")}
                   >
                     order@dalgopchang.com
                   </a>

@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { MapPin, Phone, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_PLACE_URL } from "@/lib/maps";
+import { trackClickToCall, trackOutboundMapClick } from "@/lib/analytics";
+import { cn } from "@/lib/utils";
 
 export default function LocationContact() {
   return (
@@ -28,9 +30,15 @@ export default function LocationContact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Address</h3>
-                  <p className="text-white text-lg leading-snug">
+                  <a
+                    href={GOOGLE_MAPS_PLACE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white text-lg leading-snug transition-colors hover:text-primary break-words"
+                    onClick={() => trackOutboundMapClick("location_section")}
+                  >
                     1060 W Frankford Rd Ste 115, Carrollton, TX 75007, United States
-                  </p>
+                  </a>
                 </div>
               </div>
 
@@ -40,36 +48,46 @@ export default function LocationContact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Phone</h3>
-                  <p className="text-white text-lg">+1 469-995-5552</p>
+                  <a
+                    className="text-white text-lg font-semibold transition-colors hover:text-primary"
+                    href="tel:+14692896862"
+                    onClick={() => trackClickToCall("location_section")}
+                  >
+                    469-289-6862
+                  </a>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                asChild
-                className="!h-auto bg-primary hover:bg-primary/90 text-white rounded-full px-7 py-3.5 text-base font-bold"
+              <a
+                href="tel:+14692896862"
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "!h-auto bg-primary hover:bg-primary/90 text-white rounded-full px-7 py-3.5 text-base font-bold"
+                )}
+                onClick={() => trackClickToCall("location_cta")}
               >
-                <a href="tel:+14699955552">Call for Reservation</a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="group !h-auto border-white/10 hover:bg-white/5 rounded-full px-7 py-3.5 text-base font-bold"
+                Call for Reservation
+              </a>
+              <a
+                href={GOOGLE_MAPS_PLACE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "group !h-auto border-white/10 hover:bg-white/5 rounded-full px-7 py-3.5 text-base font-bold"
+                )}
+                onClick={() => trackOutboundMapClick("location_cta")}
               >
-                <a
-                  href={GOOGLE_MAPS_PLACE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full flex-row flex-nowrap items-center justify-center gap-2 whitespace-nowrap sm:w-auto"
-                >
+                <span className="inline-flex w-full flex-row flex-nowrap items-center justify-center gap-2 whitespace-nowrap sm:w-auto">
                   <span>Get Directions</span>
                   <ExternalLink
                     className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     aria-hidden
                   />
-                </a>
-              </Button>
+                </span>
+              </a>
             </div>
           </motion.div>
 
@@ -95,6 +113,7 @@ export default function LocationContact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="glass absolute left-3 bottom-3 right-3 sm:left-4 sm:bottom-4 rounded-xl border border-white/10 px-3 py-2 text-left transition-colors hover:border-primary/40 hover:bg-white/5 sm:px-4 sm:py-2.5"
+                  onClick={() => trackOutboundMapClick("location_map_card")}
                 >
                   <p className="font-bold text-white text-sm">Dalgopchang 달곱창</p>
                   <p className="text-[11px] sm:text-xs text-white/90 leading-snug">

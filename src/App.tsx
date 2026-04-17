@@ -9,14 +9,24 @@ import BlogPost from "./pages/BlogPost";
 import GiftCard from "./pages/GiftCard";
 import SpecialDeal from "./pages/SpecialDeal";
 import { motion, AnimatePresence } from "motion/react";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedPostSlug, setSelectedPostSlug] = useState<string | null>(null);
 
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
   // Scroll to top on page change
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [currentPage, selectedPostSlug]);
+
+  useEffect(() => {
+    const pageKey = selectedPostSlug ? `blog/${selectedPostSlug}` : currentPage;
+    trackPageView("Dalgopchang", `/${pageKey}`);
   }, [currentPage, selectedPostSlug]);
 
   const handlePageChange = (page: string) => {
